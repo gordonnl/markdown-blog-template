@@ -38,3 +38,5 @@
 - asset/js/Main.js - script that reads url, loads page markdown and displays converted html
 
 Note: remember to update the title tag in index.html and 404.html, and to replace the favicon.png with your own.
+
+Also Note: to test subsequent pages locally, use hashbangs. eg. `localhost/path/to/mysite/#!/mypage`
