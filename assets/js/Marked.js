@@ -1637,7 +1637,7 @@ marked.getDefaults = function() {
         headerIds: true,
         headerPrefix: '',
         highlight: null,
-        langPrefix: 'language-',
+        langPrefix: '',
         mangle: true,
         pedantic: false,
         renderer: new Renderer(),
