@@ -103,6 +103,14 @@ h4 {
     font-size: 19px;
 }
 
+h5 {
+    font-size: 16px;
+}
+
+h6 {
+    font-size: 13px;
+}
+
 p {
     margin-top: 30px;
 }
@@ -118,6 +126,13 @@ h2 + p {
 img {
     width: 100%;
     margin: 10px 0px;
+}
+
+img + em {
+    font-size: 15px;
+    display: block;
+    text-align: center;
+    line-height: 1em;
 }
 
 a {
@@ -142,12 +157,20 @@ body > iframe {
     margin-top: 40px;
 }
 
+video {
+    width: 100%;
+}
+
 /* Code */
 
 code, pre {
     font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
     font-size: 14px;
     line-height: 1.4em;
+}
+
+pre {
+    margin: 30px auto 0px;
 }
 
 code {
