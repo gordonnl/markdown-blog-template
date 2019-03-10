@@ -4,4 +4,4 @@
 
 This is written in markdown
 
-Check out [this markdown page](./test)
+Check out [this markdown page](?test)

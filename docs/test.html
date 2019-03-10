@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, minimal-ui, initial-scale=1, viewport-fit=cover">
+        <title>Test</title>
+        <link rel="icon" type="image/png" href="assets/images/favicon.png">
+        <link href="assets/css/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1 id="test">Test</h1>
+<p>This is a <strong>test</strong> markdown file.</p>
+<iframe src="https://codesandbox.io/embed/new?codemirror=1" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+<h1 id="markdown-guide">Markdown Guide</h1>
+<p><img src="http://blog.ghost.org/content/images/2015/03/markdown-guide-1.jpg" alt="The Ultimate Guide to Markdown"></p>
+<h2 id="basic-markdown-formatting">Basic Markdown Formatting</h2>
+<h3 id="headings">Headings</h3>
+<pre><code># This is an <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span> tag
+## This is an <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span> tag
+### This is an <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span> tag
+#### This is an <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span> tag
+##### This is an <span class="hljs-tag">&lt;<span class="hljs-name">h5</span>&gt;</span> tag
+###### This is an <span class="hljs-tag">&lt;<span class="hljs-name">h6</span>&gt;</span> tag</code></pre><h3 id="emphasis">Emphasis</h3>
+<pre><code>*This text will be italic*
+_This will also be italic_
+
+**This text will be bold**
+__This will also be bold__
+
+_You **can** combine them_</code></pre><p>Result:</p>
+<p><em>This text will be italic</em></p>
+<p><em>This will also be italic</em></p>
+<p><strong>This text will be bold</strong></p>
+<p><strong>This will also be bold</strong></p>
+<p><em>You <strong>can</strong> combine them</em></p>
+<h3 id="lists">Lists</h3>
+<p><strong>Inordered:</strong></p>
+<pre><code>* Milk
+* Bread
+    * Wholegrain
+* Butter</code></pre><p>Result:</p>
+<ul>
+<li>Milk</li>
+<li>Bread<ul>
+<li>Wholegrain</li>
+</ul>
+</li>
+<li>Butter</li>
+</ul>
+<p><strong>Ordered:</strong></p>
+<pre><code>1. Tidy the kitchen  
+2. Prepare ingredients  
+3. Cook delicious things</code></pre><p>Result:</p>
+<ol>
+<li>Tidy the kitchen  </li>
+<li>Prepare ingredients  </li>
+<li>Cook delicious things</li>
+</ol>
+<h3 id="images">Images</h3>
+<pre><code>!<span class="hljs-selector-attr">[Alt Text]</span>(<span class="hljs-selector-tag">url</span>)</code></pre><p>Result:</p>
+<p><img src="http://i.imgur.com/v8IVDka.jpg" alt="m&#39;lady"></p>
+<h3 id="links">Links</h3>
+<pre><code>[link](http:<span class="hljs-comment">//example.com)</span></code></pre><p>Result:</p>
+<p><a href="http://example.com">link</a></p>
+<h3 id="blockquotes">Blockquotes</h3>
+<pre><code>As Kanye West said:
+
+&gt; We're living the future so
+&gt; the present is our past.</code></pre><p>Result:</p>
+<p>As Kanye West said:</p>
+<blockquote>
+<p>We&#39;re living the future so
+the present is our past.</p>
+</blockquote>
+<h3 id="horizontal-rules">Horizontal Rules</h3>
+<pre><code>---</code></pre><p>Result:</p>
+<hr>
+<h3 id="code-snippets">Code Snippets</h3>
+<pre><code>Indenting by 4 spaces will turn an entire paragraph into a code-block.</code></pre><p>Result:</p>
+<pre><code><span class="hljs-selector-class">.my-link</span> {
+    <span class="hljs-attribute">text-decoration</span>: underline;
+}</code></pre><h3 id="reference-lists--titles">Reference Lists &amp; Titles</h3>
+<pre><code>**The quick brown [fox][<span class="hljs-number">1</span>], jumped over the lazy [dog][<span class="hljs-number">2</span>].**
+
+[<span class="hljs-number">1</span>]: https:<span class="hljs-comment">//en.wikipedia.org/wiki/Fox "Wikipedia: Fox"</span>
+[<span class="hljs-number">2</span>]: https:<span class="hljs-comment">//en.wikipedia.org/wiki/Dog "Wikipedia: Dog"</span></code></pre><p>Result:</p>
+<p><strong>The quick brown <a href="https://en.wikipedia.org/wiki/Fox" title="Wikipedia: Fox">fox</a>, jumped over the lazy <a href="https://en.wikipedia.org/wiki/Dog" title="Wikipedia: Dog">dog</a>.</strong></p>
+<h3 id="escaping">Escaping</h3>
+<pre><code>\*literally\*</code></pre><p>Result:</p>
+<p>*literally*</p>
+<h3 id="embedding-html">Embedding HTML</h3>
+<pre><code><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"button-save large"</span>&gt;</span>Big Fat Button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></code></pre><p>Result:</p>
+<p><button class="button-save large">Big Fat Button</button></p>
+<h2 id="advanced-markdown">Advanced Markdown</h2>
+<p>Note: Some syntax which is not standard to native Markdown. They&#39;re extensions of the language.</p>
+<h3 id="strike-throughs">Strike-throughs</h3>
+<pre><code>~~deleted words~~</code></pre><p>Result:</p>
+<p><del>deleted words</del></p>
+<h3 id="highlights">Highlights</h3>
+<p>Work in <a href="https://ghost.org/">Ghost</a>:</p>
+<pre><code>==oooh fancy==</code></pre><p>Result:</p>
+<p>==oooh fancy==</p>
+<h3 id="automatic-links">Automatic Links</h3>
+<pre><code>https:<span class="hljs-comment">//ghost.org</span></code></pre><p>Result:</p>
+<p><a href="https://ghost.org">https://ghost.org</a></p>
+<h3 id="markdown-footnotes">Markdown Footnotes</h3>
+<p>Work in <a href="https://ghost.org/">Ghost</a>:</p>
+<pre><code><span class="hljs-selector-tag">The</span> <span class="hljs-selector-tag">quick</span> <span class="hljs-selector-tag">brown</span> <span class="hljs-selector-tag">fox</span><span class="hljs-selector-attr">[^1]</span> <span class="hljs-selector-tag">jumped</span> <span class="hljs-selector-tag">over</span> <span class="hljs-selector-tag">the</span> <span class="hljs-selector-tag">lazy</span> <span class="hljs-selector-tag">dog</span><span class="hljs-selector-attr">[^2]</span>.
+
+<span class="hljs-selector-attr">[^1]</span>: <span class="hljs-selector-tag">Foxes</span> <span class="hljs-selector-tag">are</span> <span class="hljs-selector-tag">red</span>
+<span class="hljs-selector-attr">[^2]</span>: <span class="hljs-selector-tag">Dogs</span> <span class="hljs-selector-tag">are</span> <span class="hljs-selector-tag">usually</span> <span class="hljs-selector-tag">not</span> <span class="hljs-selector-tag">red</span></code></pre><p>Result:</p>
+<p>The quick brown fox[^1] jumped over the lazy dog[^2].</p>
+<p>[^1]: Foxes are red
+[^2]: Dogs are usually not red</p>
+<h2 id="github-flavored-markdown">GitHub Flavored Markdown</h2>
+<h3 id="syntax-highlighting">Syntax Highlighting</h3>
+<pre><code><span class="hljs-string">``</span><span class="hljs-string">`javascript
+function fancyAlert(arg) {
+  if(arg) {
+    $.facebox({div:'#foo'})
+  }
+}
+`</span><span class="hljs-string">``</span></code></pre><p>Result:</p>
+<pre><code class="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fancyAlert</span>(<span class="hljs-params">arg</span>) </span>{
+  <span class="hljs-keyword">if</span>(arg) {
+    $.facebox({<span class="hljs-attr">div</span>:<span class="hljs-string">'#foo'</span>})
+  }
+}</code></pre>
+<h3 id="task-lists">Task Lists</h3>
+<pre><code><span class="hljs-selector-tag">-</span> <span class="hljs-selector-attr">[x]</span> @<span class="hljs-keyword">mentions</span>, #refs, [links](), **formatting**, and &lt;del&gt;tags&lt;/del&gt; supported
+- [x] list syntax required (any unordered or ordered list supported)
+- [x] this is a complete item
+- [ ] this is an incomplete item</code></pre><p>Result:</p>
+<ul>
+<li><input checked="" disabled="" type="checkbox"> @mentions, #refs, <a href="">links</a>, <strong>formatting</strong>, and <del>tags</del> supported</li>
+<li><input checked="" disabled="" type="checkbox"> list syntax required (any unordered or ordered list supported)</li>
+<li><input checked="" disabled="" type="checkbox"> this is a complete item</li>
+<li><input disabled="" type="checkbox"> this is an incomplete item</li>
+</ul>
+<h3 id="tables">Tables</h3>
+<p>You can create tables by assembling a list of words and dividing them with hyphens <code>-</code> (for the first row), and then separating each column with a pipe <code>|</code>:</p>
+<table>
+<thead>
+<tr>
+<th>First Header</th>
+<th>Second Header</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Content from cell 1</td>
+<td>Content from cell 2</td>
+</tr>
+<tr>
+<td>Content in the first column</td>
+<td>Content in the second column</td>
+</tr>
+</tbody></table>
+<h3 id="sha-references">SHA references</h3>
+<p>Any reference to a commit’s SHA-1 hash will be automatically converted into a link to that commit on GitHub.</p>
+<pre><code>16<span class="hljs-selector-tag">c999e8c71134401a78d4d46435517b2271d6ac</span>
+<span class="hljs-selector-tag">mojombo</span>@<span class="hljs-keyword">16c999e8c71134401a78d4d46435517b2271d6ac</span>
+mojombo/github-flavored-markdown@<span class="hljs-number">16</span>c999e8c71134401a78d4d46435517b2271d6ac</code></pre><h3 id="issue-references-within-a-repository">Issue references within a repository</h3>
+<p>Any number that refers to an Issue or Pull Request will be automatically converted into a link.</p>
+<pre><code><span class="hljs-meta">#1</span>
+mojombo<span class="hljs-meta">#1</span>
+mojombo/github-flavored-markdown<span class="hljs-meta">#1</span></code></pre><h3 id="username-mentions">Username @mentions</h3>
+<p>Typing an <code>@</code> symbol, followed by a username, will notify that person to come and view the comment. This is called an “@mention”, because you’re mentioning the individual. You can also @mention teams within an organization.</p>
+<h3 id="emoji">Emoji</h3>
+<p>GitHub supports emoji! Check out the <a href="http://www.emoji-cheat-sheet.com/">Emoji Cheat Sheet</a>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><a href="http://blog.ghost.org/markdown/">http://blog.ghost.org/markdown/</a></li>
+<li><a href="https://guides.github.com/features/mastering-markdown/">https://guides.github.com/features/mastering-markdown/</a></li>
+</ul>
+
+    </body>
+</html>

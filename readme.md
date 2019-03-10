@@ -1,42 +1,42 @@
-## Steps
+# Github-hosted markdown blog
+
+### Steps
 
 1. fork repository
-2. activate github pages
-3. start writing content
+2. in the settings, activate Github Pages using `/docs` as the source
+3. start writing markdown content in the `pages` folder
+    - use `?` suffix for local links to other pages
+    - use `docs/assets` to store assets
+4. Serve `index.html` locally to display markdown dynamically while writing 
+
+### Ready to build?
+
+4. run `node utils/build.js` to generate html
 
 ### Custom domain?
 
-1. change dns on domain to point to github
-2. fork repository
-3. activate github pages
-4. add custom url to pages
-5. start writing content
+5. under Github Pages settings, add custom url and enforce HTTPS
 
 ## Structure
  
  - index.html
- - 404.html
  - assets
      - css
          - main.css
      - images
          - favicon.png
-     - js
-         - Main.js
-         - Marked.js
-         - Highlight.js
  - pages
      - index.md
      - test.md
+ - utils
+     - lib
+         - checkbox.js
+         - Marked.js
+         - Highlight.js
+     - build.js
+     - dev.js
 
 ### Explanation
 
 - index.html - homepage
 - 404.html - duplicate of homepage, to catch specific page urls
-- asset/js/Marked.js - library that converts markdown to html
-- asset/js/Highlight.js - library that adds syntax highlighting to code snippets
-- asset/js/Main.js - script that reads url, loads page markdown and displays converted html
-
-Note: remember to update the title tag in index.html and 404.html, and to replace the favicon.png with your own.
-
-Also Note: to test subsequent pages locally, use hashbangs. eg. `localhost/path/to/mysite/#!/mypage`

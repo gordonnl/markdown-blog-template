@@ -1,10 +1,17 @@
-import {marked} from './Marked.js';
-import {hljs} from './Highlight.js';
+import {marked} from './lib/marked-es6.js';
+import {hljs} from './lib/highlight-es6.js';
+
+marked.setOptions({
+    langPrefix: '',
+    highlight: function(code) {
+        return hljs.highlightAuto(code).value;
+    },
+});
 
 (async function() {
 
     // Read url for requested page
-    const page = !!window.location.hash ? window.location.hash.slice(3) : location.pathname.split('/').slice(-1)[0];
+    const page = location.search.split('?')[1];
 
     // Try to load pages's markdown, or index if none requested
     let response = await fetch(`./pages/${page || 'index'}.md`, {method: 'GET'});
@@ -17,7 +24,4 @@ import {hljs} from './Highlight.js';
 
     // Replace this page's content with the converted markdown to html
     document.body.innerHTML = marked(text);
-
-    // Apply appropriate code syntax highlighting, if any blocks found
-    document.querySelectorAll('code').forEach((block) => !!block.className && hljs.highlightBlock(block));
 })();
