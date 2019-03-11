@@ -7,7 +7,6 @@ const marked = require('./lib/marked-node');
 const highlight = require('./lib/highlight-node');
 const checkBox = require('./lib/checkBox');
 
-// Set options
 marked.setOptions({
     langPrefix: '',
     highlight: function(code) {
@@ -36,7 +35,7 @@ markdown.forEach(file => {
     const newTitle = output.match(/>(.*?)<\/h1>/)[1] || null;
     if (newTitle) output = output.replace(/<title>(.*?)<\/title>/, `<title>${newTitle}</title>`);
 
-    // Replace 'docs/assets' with 'assets'
+    // Replace 'docs/assets' links with 'assets'
     output = output.replace(/docs\/assets/g, 'assets');
 
     // Replace local '?' dev links with built '.html'
