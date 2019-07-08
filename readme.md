@@ -35,8 +35,3 @@
          - Highlight.js
      - build.js
      - dev.js
-
-### Explanation
-
-- index.html - homepage
-- 404.html - duplicate of homepage, to catch specific page urls
