@@ -4,4 +4,4 @@
 
 This is about my trip.
 
-Check out [this markdown page](?test)
+![Kerid Crater](docs/assets/images/Kerid_Crater.jpg)
