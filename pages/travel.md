@@ -6,42 +6,41 @@ Last November, I took a trip to Copenhagen for a week with a couple buddies. One
 ### Iceland
 
 ![Kerid Crater](docs/assets/images/Kerid_Crater.jpg)
-<p style="text-align: center; margin-top:-5px">Kerid Crater</p>
+: Kerid Crater :
 
 ![Thingvellir Nat. Park](docs/assets/images/thingvellir_3.jpg)
-<p style="text-align: center; margin-top:-5px">Þingvellir National Park</p>
+: Þingvellir National Park :
 
 ![Thingvellir Nat. Park](docs/assets/images/thingvellir_4.jpg)
-<p style="text-align: center; margin-top:-5px">Þingvellir National Park</p>
+: Þingvellir National Park :
 
 ![Thingvellir Nat. Park](docs/assets/images/thingvellir_6.jpg)
-<p style="text-align: center; margin-top:-5px">Þingvellir National Park</p>
+: Þingvellir National Park :
 
 ### Denmark
 
 ![Christianborg Palace](docs/assets/images/Christianborg_Palace_1.jpg)
-<p style="text-align: center; margin-top:-5px">Christiansborg Palace</p>
+: Christiansborg Palace :
 
 ![Nyhavn Harbor](docs/assets/images/Nyhavn_1.jpg)
-<p style="text-align: center; margin-top:-5px">Nyhavn Harbor</p>
+: Nyhavn Harbor :
 
 ![Rosenborg Castle](docs/assets/images/Rosenborg_Slot.jpg)
-<p style="text-align: center; margin-top:-5px">Rosenborg Castle</p>
+: Rosenborg Castle :
 
 ![Christianshavns Kanal](docs/assets/images/IMG_20221109_130741.jpg)
-<p style="text-align: center; margin-top:-5px">Christianshavns Kanal</p>
+: Christianshavns Kanal :
 
 ### Sweden
 
 ![Beach in Malmo](docs/assets/images/malmo_beach.jpg)
-<p style="text-align: center; margin-top:-5px">Ribersborgsstranden</p>
+: Ribersborgsstranden :
 
 ![Park in Malmo](docs/assets/images/malmo_park_bouldering.jpg)
-<p style="text-align: center; margin-top:-5px">Outdoor Bouldering</p>
+: Outdoor Bouldering :
 
 ![Street in Malmo](docs/assets/images/malmo_street.jpg)
-<p style="text-align: center; margin-top:-5px">Larochegatan Street</p>
-
+: Larochegatan Street :
 
 
 
