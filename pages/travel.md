@@ -41,8 +41,3 @@ Last November, I took a trip to Copenhagen for a week with a couple buddies. One
 
 ![Street in Malmo](docs/assets/images/malmo_street.jpg)
 : Larochegatan Street :
-
-
-
-
-<br>[back to home](index.html)

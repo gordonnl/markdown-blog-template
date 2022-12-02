@@ -69,6 +69,3 @@ Relevant Coursework: *Data Structures, Algorithms, Operating Systems, Database A
 *Mar 2020 – Mar 2022*
 - Took 1st place and led a record 5 teams to win Oregon's International Collegiate Programming Competition site.
 - Organized weekly meetings and strategized budget and marketing for the club and its 50 active members.
-
-
-<br>[back to home](index.html)
