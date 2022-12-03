@@ -266,5 +266,3 @@ GitHub supports emoji! Check out the [Emoji Cheat Sheet](http://www.emoji-cheat-
 * http://blog.ghost.org/markdown/
 * https://guides.github.com/features/mastering-markdown/
 
-
-<br>[back to home](index.html)

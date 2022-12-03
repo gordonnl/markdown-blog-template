@@ -11,8 +11,8 @@
 🌎&nbsp; See photos from my recent travels on my [travel page](?travel).
 
 <!-- 
-    Type nbsp to add a single space.
-    Type ensp to add 2 spaces.
-    Type emsp to add 4 spaces.
+    Type &nbsp; to add a single space.
+    Type &ensp; to add 2 spaces.
+    Type &emsp; to add 4 spaces.
     You can use non-breaking space (nbsp) 4 times to insert a tab.
 -->

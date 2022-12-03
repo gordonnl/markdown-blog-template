@@ -1,11 +1,11 @@
-# Matthew Morgan's Resume
+# Matthew Morgan's Résumé
 
 ## Education
 
 **B.S. Computer Science at Oregon State University**<br>
-**Expected Graduation: June 2023**
+**4.0 GPA &nbsp; - &nbsp; Expected Graduation: June 2023**<br>
 Relevant Coursework: *Data Structures, Algorithms, Operating Systems, Database Architectures, Intro to Machine Learning*
-
+s
 
 ## Professional Experience
 
