@@ -5,7 +5,6 @@
 **B.S. Computer Science at Oregon State University**<br>
 **4.0 GPA &nbsp; - &nbsp; Expected Graduation: June 2023**<br>
 Relevant Coursework: *Data Structures, Algorithms, Operating Systems, Database Architectures, Intro to Machine Learning*
-s
 
 ## Professional Experience
 
