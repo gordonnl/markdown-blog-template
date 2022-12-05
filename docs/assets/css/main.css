@@ -297,7 +297,7 @@ blockquote {
 
 nav {
     margin-top: 2em;
-    margin-bottom: 3.05em;
+    margin-bottom: -0.2em;
     align-items: center;
     display: flex;
     flex: 1;
