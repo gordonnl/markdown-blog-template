@@ -15,7 +15,7 @@ const imageCaption = {
     }
   },
   renderer(token) {
-    return `<p style="text-align: center; margin-top:-5px">${this.parser.parseInline(token.caption)}</p>\n`;
+    return `<p style="text-align: center; margin-top:-5px"><i>${this.parser.parseInline(token.caption)}</i></p>\n`;
   },
   childtokens: ['caption'],                 // Any child tokens to be visited by walkTokens
 };
