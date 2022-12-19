@@ -13,7 +13,7 @@
 
 👨‍💻&nbsp;  View some code I've written on my [Github](https://github.com/mattmorgan6/).
 
-🌎&nbsp; See photos from my recent travels on my [travel page](?travel).
+🌎&nbsp; See photos from my recent travels on my [travel page](?photos-from-scandinavia).
 
 <!-- 
     Type &nbsp; to add a single space.
