@@ -5,33 +5,32 @@ const BUILD_DIR = `${__dirname}/../docs/`;
 
 const fs = require('fs');
 const { marked } = require('marked');
-const highlight = require('./lib/highlight-node');
 const checkBox = require('./lib/checkBox');
 const extns = require('./extensions');
 
 const postList = {
-  name: 'postList',
-  level: 'inline',                                 // Is this a block-level or inline-level tokenizer?
-  start(src) { return src.match(/:/)?.index; },    // Hint to Marked.js to stop and check for a match
-  tokenizer(src, tokens) {
-    const rule = /^!([^!\n]+)!([^!\n]*)(?:\n|$)/;  // Regex for the complete token, anchor to string start
-    const match = rule.exec(src);
-    if (match) {
-      return {                                         // Token to generate
-        type: 'postList',                              // Should match "name" above
-        raw: match[0],                                 // Text to consume from the source
-        caption: this.lexer.inlineTokens(match[1].trim())   // Additional custom properties, including
-      };
-    }
-  },
-  renderer(token) {
-    let htmlString = ``;
+    name: 'postList',
+    level: 'inline',                                 // Is this a block-level or inline-level tokenizer?
+    start(src) { return src.match(/:/)?.index; },    // Hint to Marked.js to stop and check for a match
+    tokenizer(src, tokens) {
+        const rule = /^!([^!\n]+)!([^!\n]*)(?:\n|$)/;  // Regex for the complete token, anchor to string start
+        const match = rule.exec(src);
+        if (match) {
+            return {                                         // Token to generate
+                type: 'postList',                              // Should match "name" above
+                raw: match[0],                                 // Text to consume from the source
+                caption: this.lexer.inlineTokens(match[1].trim())   // Additional custom properties, including
+            };
+        }
+    },
+    renderer(token) {
+        let htmlString = ``;
 
-    numPosts = posts.length;
+        numPosts = posts.length;
 
-    for (let i = 0; i < numPosts; i++) {
-      const post = posts[i];
-      htmlString += `
+        for (let i = 0; i < numPosts; i++) {
+            const post = posts[i];
+            htmlString += `
         <div class="post-item">
           <a class="post-item-link" href="${post.filepath}">
             <h2>
@@ -45,160 +44,165 @@ const postList = {
         </div>
       `
 
-      if (i < numPosts - 1) {
-        htmlString += `<hr />`
-      }
-    }
+            if (i < numPosts - 1) {
+                htmlString += `<hr />`
+            }
+        }
 
-    return htmlString;
-  },
-  childtokens: [],                 // Any child tokens to be visited by walkTokens
+        return htmlString;
+    },
+    childtokens: [],                 // Any child tokens to be visited by walkTokens
 };
 
 let posts = [];
 
 class Post {
-  constructor(filepath, title, date, preview) {
-    this.filepath = filepath;
-    this.title = title;
-    this.date = date;
-    this.content = preview;
-  }
+    constructor(filepath, title, date, preview) {
+        this.filepath = filepath;
+        this.title = title;
+        this.date = date;
+        this.content = preview;
+    }
 }
 
 // Add extensions (custom markdown token parsing)
 marked.use({ extensions: [extns.imageCaption, postList] });
 
 marked.setOptions({
-  langPrefix: '',
-  highlight: function (code) {
-    return highlight.highlightAuto(code).value;
-  },
-});
-
+    renderer: new marked.Renderer(),
+    highlight: function(code, lang) {
+      const hljs = require('highlight.js');
+      const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+      return hljs.highlight(code, { language }).value;
+    },
+    langPrefix: 'hljs language-', // highlight.js css expects a top-level 'hljs' class.
+    pedantic: false,
+    gfm: true,
+    breaks: false,
+    sanitize: false,
+    smartypants: false,
+    xhtml: false
+  });
 
 
 /// Parses the date out of a markdown document
 function get_datestring(markdownText) {
-  const rule = /(?<=Date: )\S+/;  // Regex for the complete token, anchor to string start
-  const dateString = rule.exec(markdownText)[0];
-  return dateString;
+    const rule = /(?<=Date: )\S+/;  // Regex for the complete token, anchor to string start
+    const dateString = rule.exec(markdownText)[0];
+    return dateString;
 }
 
+function createHtmlPosts(post_folders) {
+    post_folders.forEach(dir => {
+        const dir_path = `${POSTS_DIR}/${dir}`
+        if (fs.lstatSync(dir_path).isDirectory()) {
+            const post_filepaths = fs.readdirSync(`${dir_path}`);
+            post_filepaths.forEach(file => {
+                if (!fs.lstatSync(`${dir_path}/${file}`).isDirectory() && file.includes('.md')) {
+                    createHtmlFromPost(file, `${dir_path}/`);
+                }
+            })
+        }
+        else {
+            console.log(`Found file ${dir}, expected a directory instead.`)
+        }
+    });
+}
 
 function createHtmlFromPost(file, dirPath) {
-  checkBox(`building ${file}...`);
-  const outputFile = file.replace('.md', '.html');
+    checkBox(`building ${file}...`);
+    const outputFile = file.replace('.md', '.html');
 
-  let date;
+    let date;
 
-  // Get markdown text
-  let markdownText = fs.readFileSync(dirPath + file, 'utf8');
+    // Get markdown text
+    let markdownText = fs.readFileSync(dirPath + file, 'utf8');
 
-  const dateString = get_datestring(markdownText);
-  date = new Date(dateString);
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString#syntax
-  markdownText = markdownText.replace(("Date: " + dateString), `### ${date.toLocaleString('default', { month: 'long', year: 'numeric' })}`)
-
-  // Add return to home link at the bottom of markdown file
-  if (file !== "index.md")
-    markdownText += "\n<br>[back to home](index.html)"
-
-  // Convert markdown to html
-  const content = marked.parse(markdownText);
-
-  // Replace index dev script with page content
-  let output = index.replace('<script type="module" src="./utils/dev.js"></script>', content);
-
-  // Replace title with content of first <h1> tag
-  const newTitle = output.match(/>(.*?)<\/h1>/)[1] || null;
-  if (newTitle) output = output.replace(/<title>(.*?)<\/title>/, `<title>${newTitle}</title>`);
-
-  let contentStartIndex = markdownText.indexOf('\n', newTitle.length + 3);
-  let contentPreview = markdownText.substring(contentStartIndex, contentStartIndex + 250).trim();
-  const post = new Post(outputFile, newTitle, date, contentPreview);
-  posts.push(post);
-
-  // Replace 'docs/assets' links with 'assets'
-  output = output.replace(/docs\/assets/g, 'assets');
-
-  // Replace local '?' dev links with built '.html'
-  output = output.replace(/href="\?(.*?)"/g, 'href="$1.html"')
-
-  // Output built html to build folder
-  fs.writeFileSync(BUILD_DIR + outputFile, output);
-
-  checkBox(`${outputFile} built`, true);
-}
-
-
-function createHtmlFromPage(file, dirPath) {
-  checkBox(`building ${file}...`);
-
-  isBlogPost = dirPath == POSTS_DIR;
-  let date;
-
-  // Get markdown text
-  let markdownText = fs.readFileSync(dirPath + file, 'utf8');
-
-  if (isBlogPost) {
     const dateString = get_datestring(markdownText);
     date = new Date(dateString);
     // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString#syntax
     markdownText = markdownText.replace(("Date: " + dateString), `### ${date.toLocaleString('default', { month: 'long', year: 'numeric' })}`)
-  }
 
-  // Add return to home link at the bottom of markdown file
-  if (file !== "index.md")
-    markdownText += "\n<br>[back to home](index.html)"
+    // Add return to home link at the bottom of markdown file
+    if (file !== "index.md")
+        markdownText += "\n<br>[back to home](index.html)"
 
-  // Convert markdown to html
-  const content = marked.parse(markdownText);
+    // Convert markdown to html
+    const content = marked.parse(markdownText);
 
-  // Replace index dev script with page content
-  let output = index.replace('<script type="module" src="./utils/dev.js"></script>', content);
+    // Replace index dev script with page content
+    let output = index.replace('<script type="module" src="./utils/dev.js"></script>', content);
 
-  // Replace title with content of first <h1> tag
-  const newTitle = output.match(/>(.*?)<\/h1>/)[1] || null;
-  if (newTitle) output = output.replace(/<title>(.*?)<\/title>/, `<title>${newTitle}</title>`);
+    // Replace title with content of first <h1> tag
+    const newTitle = output.match(/>(.*?)<\/h1>/)[1] || null;
+    if (newTitle) output = output.replace(/<title>(.*?)<\/title>/, `<title>${newTitle}</title>`);
 
-  if (isBlogPost) {
-    let contentStartIndex = markdownText.indexOf('\n', newTitle.length + 3);
+    // Get a teaser from the start of the text of the blog, ignoring the first image
+    let contentStartIndex = markdownText.indexOf(':\n<br>\n\n', newTitle.length + 3) + 8;
     let contentPreview = markdownText.substring(contentStartIndex, contentStartIndex + 250).trim();
-    const post = new Post(newTitle, date, contentPreview);
+    const post = new Post(outputFile, newTitle, date, contentPreview);
     posts.push(post);
-  }
 
-  // Replace 'docs/assets' links with 'assets'
-  output = output.replace(/docs\/assets/g, 'assets');
+    // Replace 'docs/assets' links with 'assets'
+    output = output.replace(/docs\/assets/g, 'assets');
 
-  // Replace local '?' dev links with built '.html'
-  output = output.replace(/href="\?(.*?)"/g, 'href="$1.html"')
+    // Replace local '?' dev links with built '.html'
+    output = output.replace(/href="\?(.*?)"/g, 'href="$1.html"')
 
-  // Output built html to build folder
-  const outputFile = file.replace('.md', '.html');
-  fs.writeFileSync(BUILD_DIR + outputFile, output);
+    // Output built html to build folder
+    fs.writeFileSync(BUILD_DIR + outputFile, output);
 
-  checkBox(`${outputFile} built`, true);
+    checkBox(`${outputFile} built`, true);
+}
+
+function createHtmlFromPage(file, dirPath) {
+    checkBox(`building ${file}...`);
+
+    // Get markdown text
+    let markdownText = fs.readFileSync(dirPath + file, 'utf8');
+
+    // Add return to home link at the bottom of markdown file
+    if (file !== "index.md")
+        markdownText += "\n<br>[back to home](index.html)"
+
+    // Convert markdown to html
+    const content = marked.parse(markdownText);
+
+    // Replace index dev script with page content
+    let output = index.replace('<script type="module" src="./utils/dev.js"></script>', content);
+
+    // Replace title with content of first <h1> tag
+    const newTitle = output.match(/>(.*?)<\/h1>/)[1] || null;
+    if (newTitle) output = output.replace(/<title>(.*?)<\/title>/, `<title>${newTitle}</title>`);
+
+    // Replace 'docs/assets' links with 'assets'
+    output = output.replace(/docs\/assets/g, 'assets');
+
+    // Replace local '?' dev links with built '.html'
+    output = output.replace(/href="\?(.*?)"/g, 'href="$1.html"')
+
+    // Output built html to build folder
+    const outputFile = file.replace('.md', '.html');
+    fs.writeFileSync(BUILD_DIR + outputFile, output);
+
+    checkBox(`${outputFile} built`, true);
 }
 
 
 // Get index.html text
 const index = fs.readFileSync(INDEX, 'utf8');
 
-// scrape pages folder for markdown files
-const post_filepaths = fs.readdirSync(POSTS_DIR);
-post_filepaths.forEach(file => {
-  createHtmlFromPost(file, POSTS_DIR);
-});
+// scrape post folder for markdown files and convert them to html
+const post_folders = fs.readdirSync(POSTS_DIR);
+createHtmlPosts(post_folders);
 
 // sort the posts list by date
 posts.sort((a, b) => {
-  return b.date - a.date;
+    return b.date - a.date;
 });
 
-// scrape pages folder for markdown files
+// scrape pages folder for markdown files and convert them to html
 const page_filepaths = fs.readdirSync(PAGES_DIR);
 page_filepaths.forEach(file => {
-  createHtmlFromPage(file, PAGES_DIR);
+    createHtmlFromPage(file, PAGES_DIR);
 });

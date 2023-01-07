@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimal-ui, initial-scale=1, viewport-fit=cover">
+    <title>LeetCode Leaderboard Project</title>
+    <!-- <link rel="icon" type="image/png" href="assets/images/favicon.png"> -->
+    <link href="assets/css/main.css" rel="stylesheet">
+</head>
+
+<nav>
+    <a class="navigation" href=".">home</a>
+    <a class="navigation" href="resume.html">resume</a>
+    <a class="navigation" href="blog.html">blog</a>
+</nav>
+
+<body>
+    <h1 id="leetcode-leaderboard-project">LeetCode Leaderboard Project</h1>
+<h3 id="january-2023">January 2023</h3>
+<p><img src="../posts/leetcode-leaderboard-bot/images/best-bot-teaser.png" alt="QR Codes">
+<p style="text-align: center; margin-top:-5px"><i>A snippet of the weekly leaderboard.</i></p>
+<br></p>
+<p>The idea for this project came to me shortly after my election to president of the ACM club at Oregon State University. As a student chapter of the greater ACM organization, our group specifically focuses on competitive programming and technical interview prep. 
+I wanted a way to motivate the members to practice solving problems in their free time to prepare for upcoming competitions as well as software engineering interviews at big name companies. Since our club uses a Discord server for communication, I figured it was the perfect opportunity to learn to write a bot.</p>
+<br>
+
+<h4 id="the-idea">The Idea</h4>
+<blockquote>
+<p>Create a discord bot that automatically fetches a leaderboard of how many problems each club member solved in the last week!</p>
+</blockquote>
+<br>
+
+<h4 id="implementation">Implementation</h4>
+<p><strong>1. Getting the data</strong><br>
+The first thing to tackle was determining a way to get specific user data from leetcode.com. The nice thing is that problem submissions are public across all accounts. I popped open a browser and inspected the network requests and found a graphql query <code>getRecentSubmissionList</code>, which will get a list of submissions for a specific user. </p>
+<p><strong>2. Coding up the Discord bot</strong><br>
+I decided to go with Python3 and the <a href="https://discordpy.readthedocs.io/en/stable/">discord.py</a> library. My vision for the bot was two-fold. First, once a week, the bot would autonomously post a leaderboard of how many problems a person solved. Secondly, users could run a command such as <code>!get user1</code> and the bot would print the most recent problem that user1 has solved. This came in handy during ACM meetings when people wanted to see what their friends were recently working on and what language they used.</p>
+<p><img src="../posts/leetcode-leaderboard-bot/images/bot-available-commands.png" alt="QR Codes">
+<p style="text-align: center; margin-top:-5px"><i>A list of available commands for the LeetCode bot.</i></p>
+<br></p>
+<p><img src="../posts/leetcode-leaderboard-bot/images/bot-recent.png" alt="QR Codes">
+<p style="text-align: center; margin-top:-5px"><i>Getting the most recent submission for a user.</i></p>
+<br></p>
+<p><strong>3. Parallelization</strong><br>
+Because each request would only fetch problem submissions for a specific user, it would take minutes to get the data sequentially for a weekly leaderboard. Instead, I used the <a href="https://github.com/spyoungtech/grequests">grequests library</a> to make asyncronous requests in parallel which reduced the time to fetch data by 100x.</p>
+<p><strong>4. Unit tests</strong><br>
+Adding unit tests was important for the reliability of the project as well as a good skill to practice. The <a href="https://docs.pytest.org/en/7.2.x/">pytest library</a> was especially nice for mocking GET requests and file reads.</p>
+<br>
+
+<h4 id="key-takeaways">Key takeaways</h4>
+<p>This was a big project for me because it was the first outside of the workplace that I had developed for real users. I found a problem to solve, devised a solution, learned the necessary skills, and maintained the project for multiple years. </p>
+<p>In the end, the bot boosted motivation for club members to practice problem solving. OSU ACM <a href="http://acm.oregonstate.edu/">swept Oregon Division 1 and Division 2 of the International Collegiate Programming Contest in 2020</a>. Moreover, in the following year, a record 9 teams from OSU competed at ICPC NW!</p>
+<p>You can find the entire codebase in the <a href="https://github.com/osu-acm/LeetCode_Tracker">github repo linked here</a>.</p>
+<p><br><a href="index.html">back to home</a></p>
+
+</body>
+
+</html>

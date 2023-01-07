@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/mattmorgan6/blog#readme",
   "dependencies": {
+    "highlight.js": "^11.7.0",
     "marked": "^4.2.3"
   }
 }
