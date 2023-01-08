@@ -4,7 +4,7 @@ const imageCaption = {
   level: 'inline',                                 // Is this a block-level or inline-level tokenizer?
   start(src) { return src.match(/:/)?.index; },    // Hint to Marked.js to stop and check for a match
   tokenizer(src, tokens) {
-    const rule = /^:([^:\n]+):([^:\n]*)(?:\n|$)/;  // Regex for the complete token, anchor to string start
+    const rule = /^::([^:\n]+)::([^:\n]*)(?:\n|$)/;  // Regex for the complete token, anchor to string start
     const match = rule.exec(src);
     if (match) {
       return {                                         // Token to generate

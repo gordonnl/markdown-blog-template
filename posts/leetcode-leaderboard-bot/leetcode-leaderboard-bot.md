@@ -2,7 +2,7 @@
 Date: 01/03/2023
 
 ![QR Codes](../posts/leetcode-leaderboard-bot/images/best-bot-teaser.png)
-: A snippet of the weekly leaderboard. :
+:: A snippet of the weekly leaderboard. ::
 <br>
 
 The idea for this project came to me shortly after my election to president of the ACM club at Oregon State University. As a student chapter of the greater ACM organization, our group specifically focuses on competitive programming and technical interview prep. 
@@ -24,12 +24,12 @@ The first thing to tackle was determining a way to get specific user data from l
 I decided to go with Python3 and the [discord.py](https://discordpy.readthedocs.io/en/stable/) library. My vision for the bot was two-fold. First, once a week, the bot would autonomously post a leaderboard of how many problems a person solved. Secondly, users could run a command such as `!get user1` and the bot would print the most recent problem that user1 has solved. This came in handy during ACM meetings when people wanted to see what their friends were recently working on and what language they used.
 
 ![QR Codes](../posts/leetcode-leaderboard-bot/images/bot-available-commands.png)
-: A list of available commands for the LeetCode bot. :
+:: A list of available commands for the LeetCode bot. ::
 <br>
 
 
 ![QR Codes](../posts/leetcode-leaderboard-bot/images/bot-recent.png)
-: Getting the most recent submission for a user. :
+:: Getting the most recent submission for a user. ::
 <br>
 
 

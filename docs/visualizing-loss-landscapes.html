@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimal-ui, initial-scale=1, viewport-fit=cover">
-    <title>Visualizing CNN Loss Landscapes Project</title>
+    <title>Visualizing CNN Loss Landscapes</title>
     <!-- <link rel="icon" type="image/png" href="assets/images/favicon.png"> -->
     <link href="assets/css/main.css" rel="stylesheet">
 </head>
@@ -17,80 +17,42 @@
 </nav>
 
 <body>
-    <h1 id="visualizing-cnn-loss-landscapes-project">Visualizing CNN Loss Landscapes Project</h1>
+    <h1 id="visualizing-cnn-loss-landscapes">Visualizing CNN Loss Landscapes</h1>
 <h3 id="january-2023">January 2023</h3>
 <p><img src="../posts/visualizing-loss-landscapes/images/ResNet-PCA-3d-contours.png" alt="QR Codes">
-<p style="text-align: center; margin-top:-5px"><i>A snippet of a weekly leaderboard from the bot.</i></p>
+<p style="text-align: center; margin-top:-5px"><i>The path to convergence on a loss landscape.</i></p>
 <br></p>
-<p>The idea for this project came to me shortly after my election to president of the ACM club at Oregon State University. The club is a student chapter of the greater ACM organization,
-but our group specifically focuses on competitive programming and technical interview prep. 
-I wanted a way to motivate the members to practice solving problems in their free time so that they were prepared for
-competitions as well as software engineering interviews at big name companies.</p>
-<p>Since our club uses a discord server for communication, the idea seemed wise:</p>
-<blockquote>
-<p>Let&#39;s visualize loss landscapes!</p>
-</blockquote>
-<h4 id="solution-overview">Solution Overview</h4>
-<p>The solution I devised was to stick a unique QR code on the edge of each tray. Our computer vision software can then autonomously match the before and after pictures. However, two questions arose while discussing our plan:</p>
-<ol>
-<li>How can we generate unique QR codes?</li>
-<li>How will we print the QR codes onto stickers?</li>
-</ol>
-<p>As for the first problem, I quickly wrote a python script to generate unique QR codes and formatted them onto pages of a PDF document for easy printing. To ensure the QR Codes were unique, we used a serial numbering system to label the QR codes 1000001, 1000002, ... up to a limit the user specifies. We could have used UUIDs, but our serial numbering allows us to have different &quot;batches&quot; of numbers for different experiments.</p>
-<p>To solve the second problem, I found <a href="https://www.walmart.com/ip/Avery-Printable-Sticker-Paper-8-5-x-11-Inkjet-Printer-White-15-Repositionable-Sticker-Sheets-3383/10353060?wmlspartner=wlpa&selectedSellerId=0&http://clickserve.dartsearch.net/link/click?lid=92700060762254883&ds_s_kwgid=58700006715445296&ds_s_inventory_feed_id=97700000003583668&ds_a_cid=654818135&ds_a_caid=13956209185&ds_a_agid=126452889113&ds_a_lid=pla-1392082700544&ds_a_cid=116919406&ds_a_caid=361575031&ds_a_agid=1200667322826314&ds_a_fiid=&ds_a_lid=pla-4578641339573147&&ds_e_adid=&ds_e_matchtype=search&ds_e_device=c&ds_e_network=s&ds_e_product_group_id=4578641339573147&ds_e_product_id=10353060_0&ds_e_product_merchant_id=27449&ds_e_product_country=US&ds_e_product_language=EN&ds_e_product_channel=Online&ds_e_product_store_id=&ds_url_v=2&ds_dest_url=?adid=2222222242031946843&wmlspartner=wmtlabs&wl0=e&wl1=s&wl2=c&wl3=&wl4=pla-4578641339573147&wl5=&wl6=&wl7=&wl8=%7baceid%7d&wl9=&wl10=27449&wl11=Online&wl12=10353060_0&wl13=&veh=sem_LIA&msclkid=6a1fdfb6e32d105ad801bcf992992922&gclid=6a1fdfb6e32d105ad801bcf992992922&gclsrc=3p.ds">8.5x11&quot; sticker sheets online</a> that we could print the QR codes onto using a standard inkjet printer.</p>
-<p><img src="../posts/visualizing-loss-landscapes/images/paper-teaser.png" alt="QR Codes">
-<p style="text-align: center; margin-top:-5px"><i>A snippet of a weekly leaderboard from the bot.</i></p>
-<br></p>
-<p><img src="../posts/visualizing-loss-landscapes/images/ResNet-Random-3d-contours-critical-points.png" alt="QR Codes">
-<p style="text-align: center; margin-top:-5px"><i>A snippet of a weekly leaderboard from the bot.</i></p>
-<br></p>
-<h4 id="walking-through-the-code">Walking through the code</h4>
-<p>The design of the algorithm is fairly straightforward:</p>
-<ol>
-<li>First, create a list of serially labeled QR codes as PIL image objects.</li>
-<li>Second, take the list of QR code images and format as many of them onto a PDF page as possible. 
-When the page is full, we write it to a PDF file. Repeat this step with the remaining QR codes onto a new blank page, until all remaining QR codes are written onto a page.</li>
-<li>Now that we have a bunch of one-page files, the program merges them into a multi-page PDF.</li>
-</ol>
-<p>There is one problem I identified with this approach: this script uses a substantial amount of memory.
-If the user wanted to generate millions of QR codes, the program would have to create an image object for each
-and store them in a list. While most computers would be able to handle a few Gigabytes of memory consumption from the program, we can use the <code>generator</code> feature instead and only consume a few Megabytes.</p>
-<p>You can see the first step of my algorithm below, where I <code>yield</code> the newly-created QR code image:</p>
-<pre><code class="hljs language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">create_qr_code_image_objects</span>():
-    <span class="hljs-string">&quot;&quot;&quot;Returns a generator of qr code PIL ImageDraw objects.&quot;&quot;&quot;</span>
-
-    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(total_qr_codes):
-        curr_num = starting_num + i
-
-        <span class="hljs-comment"># Generate qr code.</span>
-        data = <span class="hljs-built_in">str</span>(curr_num)
-        qr_code_img = qrcode.make(data)
-        qr_code_img = qr_code_img.resize(QR_SIZE, resample=Resampling.BOX)
-
-        <span class="hljs-comment"># Add text to the qr code (attempt to center at top)</span>
-        draw_canvas = ImageDraw.Draw(qr_code_img)
-        draw_canvas.text(((QR_SIZE[<span class="hljs-number">0</span>] // <span class="hljs-number">2</span>) - <span class="hljs-number">20</span>, <span class="hljs-number">0</span>), data, font=FONT)
-
-        <span class="hljs-keyword">yield</span> qr_code_img
-</code></pre>
-<p>Then, in the second step of the algorithm, I simply call <code>next()</code> on the generator to retrieve the next QR code image object.</p>
-<pre><code class="hljs language-python"><span class="hljs-keyword">while</span> row + QR_SIZE[<span class="hljs-number">0</span>] + VERT_SPACING_BETWEEN_QR_CODES &lt;= pdf_height:
-  <span class="hljs-keyword">while</span> col + QR_SIZE[<span class="hljs-number">0</span>] + HORZ_SPACING_BETWEEN_QR_CODES &lt;= pdf_width:
-      <span class="hljs-keyword">try</span>:
-          qr_code_img = <span class="hljs-built_in">next</span>(qr_code_image_generator)
-      <span class="hljs-keyword">except</span> StopIteration:
-          <span class="hljs-keyword">break</span>
-
-      resized_qr_code_img_obj = ImageOps.fit(qr_code_img, QR_SIZE, Resampling.LANCZOS)  
-      pdf_canvas.paste(resized_qr_code_img_obj, (col, row))
-
-      <span class="hljs-comment"># code for the rest of the function omitted</span>
-</code></pre>
+<p>This project is the final project for the Scientific Visualization class in fall 2022. The project was open ended, with the only requirements
+that you work with a partner and implement a scientific visualization paper using OpenGL. The paper Chase Ison and I chose is titled <a href="https://proceedings.neurips.cc/paper/2018/hash/a41b3bb3e6b050b6c9067c67f663b915-Abstract.html">&quot;Visualizing the Loss Landscape of Neural Nets&quot;</a> by Hao Li et al. and implemented two different techniques to visualize the loss landscapes of neural nets.</p>
+<p>I recommend that you <a href="https://github.com/charles-ison/sv_term_project/blob/main/Term_Project_Paper.pdf">read our final report linked here for more details</a>, as this post will just be a quick overview of the project and some our results.</p>
 <br>
 
-<h4 id="conclusion">Conclusion</h4>
-<p>Overall, even with a project of small scope, I learned how to use the generator feature and wrote a script that will save time for my lab and the open-source community. </p>
-<p>You can find the entire python script as well as instructions for running the program in my <a href="https://github.com/mattmorgan6/serial-qr-code-generator">github repo linked here</a>.</p>
+<h4 id="solution-overview">Solution Overview</h4>
+<p>We chose to visualize two convolutional neural networks: ResNet-50 and VGG, each trained to classify images of the CIFAR-10 dataset. For each model, we generated two different loss landscapes from the two techniques Hao Li et al. described: random direction iteration and principle component analysis (PCA).</p>
+<p><img src="../posts/visualizing-loss-landscapes/images/cifar-10-dataset-example.png" alt="CIFAR-10 dataset examples">
+<p style="text-align: center; margin-top:-5px"><i>CIFAR-10 dataset examples.</i></p>
+</p>
+<p>Our process for generating the visualization went as follows:</p>
+<ol>
+<li>Train a model</li>
+<li>After each epoch, perform a dimensionality reduction to two vectors.</li>
+<li>Iterate over a grid of the loss across those two vectors, saving the points as our results.</li>
+<li>Export the points to a PLY file which could be easily loaded into our OpenGL project.</li>
+<li>Visualize the PLY file in OpenGL, using different techiques to produce different visualizations, such as marching squares to visualize contour lines.</li>
+</ol>
+<br>
+
+<h4 id="results">Results</h4>
+<p><img src="../posts/visualizing-loss-landscapes/images/paper-teaser.png" alt="QR Codes">
+<p style="text-align: center; margin-top:-5px"><i>Loss landscapes of the ResNet-50 model from PCA dimensionality reduction, with the gradient decent path.</i></p>
+<br></p>
+<p>TODO: talk about exactly what the results mean!!!</p>
+<p><img src="../posts/visualizing-loss-landscapes/images/ResNet-Random-3d-contours-critical-points.png" alt="QR Codes">
+<p style="text-align: center; margin-top:-5px"><i>The 3D loss landscape with critical points labelled for the ResNet-50 model using random direction iteration for dimensionality reduction.</i></p>
+<br></p>
+<h4 id="key-takeaways">Key Takeaways</h4>
+<p>This was a fun project that pushed me to understand dimensionality reduction and what we can learn from loss landscapes. The project stressed a lot of different skills- being able to write PyTorch code, being able to write dimensionality reduction code, training the models on a high performance cluster, formatting the data, and visualizing it with custom OpenGL code. I&#39;m thankful to have had Chase as my project partner for knocking this project out within a week!</p>
+<p>You can find the entire codebase as well as our final report in our <a href="https://github.com/charles-ison/sv_term_project">github repo linked here</a>.</p>
 <p><br><a href="index.html">back to home</a></p>
 
 </body>
