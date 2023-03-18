@@ -1,7 +1,8 @@
 # LeetCode Leaderboard Project
 Date: 01/03/2023
+<PreviewImg>../posts/leetcode-leaderboard-bot/images/best-bot-teaser-cropped.png</PreviewImg>
 
-![QR Codes](../posts/leetcode-leaderboard-bot/images/best-bot-teaser.png)
+![LeetCode Bot Teaser](../posts/leetcode-leaderboard-bot/images/best-bot-teaser.png)
 :: A snippet of the weekly leaderboard. ::
 <br>
 

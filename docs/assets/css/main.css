@@ -361,6 +361,7 @@ p.post-item {
     font-size: medium;
     margin-bottom: 1em;
     text-decoration: none;
+    margin-top: 1em;
 }
 
 .post-item-link:link {

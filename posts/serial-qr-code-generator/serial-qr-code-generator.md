@@ -1,5 +1,7 @@
 # Serial QR Code Generator Project
 Date: 12/15/2022
+<PreviewImg>../posts/serial-qr-code-generator/images/small-preview.png</PreviewImg>
+
 
 ![QR Codes](../posts/serial-qr-code-generator/images/cropped-multi-page-pdf-qr-codes.png)
 :: Example output PDF from generating 50 QR codes. ::

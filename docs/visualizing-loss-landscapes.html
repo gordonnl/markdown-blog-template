@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimal-ui, initial-scale=1, viewport-fit=cover">
-    <title>Visualizing CNN Loss Landscapes</title>
+    <title>Visualizing Neural Network Loss Landscapes</title>
     <!-- <link rel="icon" type="image/png" href="assets/images/favicon.png"> -->
     <link href="assets/css/main.css" rel="stylesheet">
 </head>
@@ -17,29 +17,32 @@
 </nav>
 
 <body>
-    <h1 id="visualizing-cnn-loss-landscapes">Visualizing CNN Loss Landscapes</h1>
+    <h1 id="visualizing-neural-network-loss-landscapes">Visualizing Neural Network Loss Landscapes</h1>
 <h3 id="january-2023">January 2023</h3>
+<p></p>
 <p><img src="../posts/visualizing-loss-landscapes/images/ResNet-PCA-3d-contours.png" alt="QR Codes">
 <p style="text-align: center; margin-top:-5px"><i>The path to convergence on a loss landscape.</i></p>
 <br></p>
-<p>This project is the final project for the Scientific Visualization class in fall 2022. The project was open ended, with the only requirements
-that you work with a partner and implement a scientific visualization paper using OpenGL. The paper Chase Ison and I chose is titled <a href="https://proceedings.neurips.cc/paper/2018/hash/a41b3bb3e6b050b6c9067c67f663b915-Abstract.html">&quot;Visualizing the Loss Landscape of Neural Nets&quot;</a> by Hao Li et al. and implemented two different techniques to visualize the loss landscapes of neural nets.</p>
-<p>I recommend that you <a href="https://github.com/charles-ison/sv_term_project/blob/main/Term_Project_Paper.pdf">read our final report linked here for more details</a>, as this post will just be a quick overview of the project and some our results.</p>
+<p>Training artificial neural networks is a sensitive process due to architecture choices and hyperparameter tuning. By visualizing both the model’s loss landscape and path during gradient descent towards some local minimum, we can gain intuitions about how tuning and architectural decisions impact the model’s ability to converge. In this project, Chase Ison and I visualize loss landscapes of a convolutional neural network by implementing two separate methods proposed by Li et. al. in &quot;<a href="https://proceedings.neurips.cc/paper/2018/hash/a41b3bb3e6b050b6c9067c67f663b915-Abstract.html">Visualizing the Loss Landscape of Neural Nets</a>.&quot; For each method, we perform dimensionality reduction on a model’s weights during backpropagation, then iteratively manipulate the weights using these techniques to generate scalar fields termed &#39;loss landscapes&#39;. Finally, we evaluate our results on two popular neural network models: ResNet-50 and VGG-11.</p>
+<p>The project was the open-ended final for CS 453 - Scientific Visualization at OSU in fall 2022. This post will just be a quick overview of the project and some our results. I recommend that you <a href="https://github.com/charles-ison/sv_term_project/blob/main/Term_Project_Paper.pdf">read our complete final report linked here</a> for more details.</p>
 <br>
 
 <h4 id="solution-overview">Solution Overview</h4>
-<p>We chose to visualize two convolutional neural networks: ResNet-50 and VGG, each trained to classify images of the CIFAR-10 dataset. For each model, we generated two different loss landscapes from the two techniques Hao Li et al. described: random direction iteration and principle component analysis (PCA).</p>
-<p><img src="../posts/visualizing-loss-landscapes/images/cifar-10-dataset-example.png" alt="CIFAR-10 dataset examples">
+<p>We chose to visualize two convolutional neural networks: ResNet-50 and VGG, each trained to classify images of the CIFAR-10 dataset. For each model, we generated two different loss landscapes from the two techniques detailed by Hao Li et al: <em>random direction iteration</em> and <em>principle component analysis (PCA)</em>.</p>
+<p><img src="../posts/visualizing-loss-landscapes/images/cifar-10-dataset-wide.png" alt="CIFAR-10 dataset examples">
 <p style="text-align: center; margin-top:-5px"><i>CIFAR-10 dataset examples.</i></p>
 </p>
 <p>Our process for generating the visualization went as follows:</p>
 <ol>
-<li>Train a model</li>
-<li>After each epoch, perform a dimensionality reduction to two vectors.</li>
-<li>Iterate over a grid of the loss across those two vectors, saving the points as our results.</li>
-<li>Export the points to a PLY file which could be easily loaded into our OpenGL project.</li>
+<li>Train a model.</li>
+<li>Perform dimensionality reduction to two vectors using either the random direction approach or PCA approach.</li>
+<li>Iterate over a 25x25 grid of those two vectors, calculate the loss at each point, saving each (x, y, loss) tuple to our results matrix.</li>
+<li>Export the results to a PLY file.</li>
 <li>Visualize the PLY file in OpenGL, using different techiques to produce different visualizations, such as marching squares to visualize contour lines.</li>
 </ol>
+<p>You might be wondering why we use two different versions of dimensionality reduction?
+Random direction iteration is essentially the simple way to generate a loss landscape, which was nice to do first just to make sure we were getting a good result.
+On the other hand, PCA gave us meaningful insights and allowed us to trace the path of the model converging as it minimized the loss.</p>
 <br>
 
 <h4 id="results">Results</h4>
@@ -51,7 +54,7 @@ that you work with a partner and implement a scientific visualization paper usin
 <p style="text-align: center; margin-top:-5px"><i>The 3D loss landscape with critical points labelled for the ResNet-50 model using random direction iteration for dimensionality reduction.</i></p>
 <br></p>
 <h4 id="key-takeaways">Key Takeaways</h4>
-<p>This was a fun project that pushed me to understand dimensionality reduction and what we can learn from loss landscapes. The project stressed a lot of different skills- being able to write PyTorch code, being able to write dimensionality reduction code, training the models on a high performance cluster, formatting the data, and visualizing it with custom OpenGL code. I&#39;m thankful to have had Chase as my project partner for knocking this project out within a week!</p>
+<p>I&#39;d give this project five starts in that it pushed me to understand dimensionality reduction and what we can learn from loss landscapes. The project stressed a lot of different skills- being able to write PyTorch code, being able to write dimensionality reduction code, training the models on a high performance cluster, formatting the data, and visualizing it with custom OpenGL code. I&#39;m thankful to have had Chase as my project partner for knocking this project out within a week!</p>
 <p>You can find the entire codebase as well as our final report in our <a href="https://github.com/charles-ison/sv_term_project">github repo linked here</a>.</p>
 <p><br><a href="index.html">back to home</a></p>
 

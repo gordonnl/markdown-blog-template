@@ -34,13 +34,15 @@ const postList = {
         <div class="post-item">
             <div style="border: 1.5px solid #CACACA; border-radius: 10px;">
                 <a class="post-item-link" href="${post.filepath}">
-                <div style="display: flex; padding: 30px">
-                    <img src="docs/assets/images/amazon-logo.png" width="auto" height="auto"   style="display: block;
-                        max-width:230px;
-                        max-height:95px;
+                <div style="display: flex; padding: 25px 15px 15px 15px">
+                    <img src="${post.previewImg}" width="auto" height="auto" style="display: block;
+                        max-width:200px;
+                        max-height:160px;
                         width: auto;
                         height: auto;
-                        margin-right: 10px"/>
+                        margin-right: 40px;
+                        object-fit: scale-down;
+                        border-radius: 20px;"/>
                     <div>
                         <p style="margin-top: 0px">
                             <b>${post.title}</b>
@@ -66,10 +68,11 @@ const postList = {
 let posts = [];
 
 class Post {
-    constructor(filepath, title, date, preview) {
+    constructor(filepath, title, date, previewImg, preview) {
         this.filepath = filepath;
         this.title = title;
         this.date = date;
+        this.previewImg = previewImg;
         this.content = preview;
     }
 }
@@ -137,7 +140,8 @@ function createHtmlFromPost(file, dirPath) {
         markdownText += "\n<br>[back to home](index.html)"
 
     // Convert markdown to html
-    const content = marked.parse(markdownText);
+    let content = marked.parse(markdownText);
+
 
     // Replace index dev script with page content
     let output = index.replace('<script type="module" src="./utils/dev.js"></script>', content);
@@ -146,14 +150,24 @@ function createHtmlFromPost(file, dirPath) {
     const newTitle = output.match(/>(.*?)<\/h1>/)[1] || null;
     if (newTitle) output = output.replace(/<title>(.*?)<\/title>/, `<title>${newTitle}</title>`);
 
+    const previewImgRegexMatch = output.match(/<PreviewImg>(.*?)<\/PreviewImg>/);
+    const previewImgPath = previewImgRegexMatch ? previewImgRegexMatch[1] : 'docs/assets/images/amazon-logo.png';
+
+    
+
+    // console.log("preview: " + previewImgPath)
+
     // Get a teaser from the start of the text of the blog, ignoring the first image
     let contentStartIndex = markdownText.indexOf(':\n<br>\n\n', newTitle.length + 3) + 8;
     let contentPreview = markdownText.substring(contentStartIndex, contentStartIndex + 150).trim();
-    const post = new Post(outputFile, newTitle, date, contentPreview);
+    const post = new Post(outputFile, newTitle, date, previewImgPath, contentPreview);
     posts.push(post);
 
     // Replace 'docs/assets' links with 'assets'
     output = output.replace(/docs\/assets/g, 'assets');
+
+    // Remove the preview image tag
+    output = output.replace(/<PreviewImg>(.*?)<\/PreviewImg>/,"");
 
     // Replace local '?' dev links with built '.html'
     output = output.replace(/href="\?(.*?)"/g, 'href="$1.html"')
