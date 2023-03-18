@@ -32,15 +32,24 @@ const postList = {
             const post = posts[i];
             htmlString += `
         <div class="post-item">
-          <a class="post-item-link" href="${post.filepath}">
-            <h2>
-              ${post.title}
-            </h2>
-            <p class="post-item">${post.content}...</p>
-            <div class="post-item-footer">
-              <span class="post-item-date">— ${post.date.toLocaleString('default', { month: 'long', year: 'numeric' })}</span>
+            <div style="border: 1.5px solid #CACACA; border-radius: 10px;">
+                <a class="post-item-link" href="${post.filepath}">
+                <div style="display: flex; padding: 30px">
+                    <img src="docs/assets/images/amazon-logo.png" width="auto" height="auto"   style="display: block;
+                        max-width:230px;
+                        max-height:95px;
+                        width: auto;
+                        height: auto;
+                        margin-right: 10px"/>
+                    <div>
+                        <p style="margin-top: 0px">
+                            <b>${post.title}</b>
+                        </p>
+                        <p class="post-item">${post.content}...</p>
+                    </div>
+                </div>
+                </a>
             </div>
-          </a>
         </div>
       `
 
@@ -139,7 +148,7 @@ function createHtmlFromPost(file, dirPath) {
 
     // Get a teaser from the start of the text of the blog, ignoring the first image
     let contentStartIndex = markdownText.indexOf(':\n<br>\n\n', newTitle.length + 3) + 8;
-    let contentPreview = markdownText.substring(contentStartIndex, contentStartIndex + 250).trim();
+    let contentPreview = markdownText.substring(contentStartIndex, contentStartIndex + 150).trim();
     const post = new Post(outputFile, newTitle, date, contentPreview);
     posts.push(post);
 
