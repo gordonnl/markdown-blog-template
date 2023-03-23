@@ -26,32 +26,30 @@ const postList = {
     renderer(token) {
         let htmlString = ``;
 
-        numPosts = posts.length;
+        let numPosts = posts.length;
+        let limit = token.caption[0].text.split(' ')[0];
+        if (limit && !isNaN(limit)) {
+            numPosts = Math.min(parseInt(limit), posts.length);
+        }
 
         for (let i = 0; i < numPosts; i++) {
             const post = posts[i];
             htmlString += `
         <div class="post-item">
-            <div style="border: 1.5px solid #CACACA; border-radius: 10px;">
-                <a class="post-item-link" href="${post.filepath}">
-                <div style="display: flex; padding: 25px 15px 15px 15px">
-                    <img src="${post.previewImg}" width="auto" height="auto" style="display: block;
-                        max-width:200px;
-                        max-height:160px;
-                        width: auto;
-                        height: auto;
-                        margin-right: 40px;
-                        object-fit: scale-down;
-                        border-radius: 20px;"/>
-                    <div>
-                        <p style="margin-top: 0px">
-                            <b>${post.title}</b>
-                        </p>
-                        <p class="post-item">${post.content}...</p>
-                    </div>
+            <a class="post-item-link" href="${post.filepath}">
+            <div class="post-item-container">
+                <div class="preview-img-container">
+                    <img src="${post.previewImg}"
+                        class="preview-img"/>
                 </div>
-                </a>
+                <div>
+                    <p style="margin-top: 0px; font-size: 18px;">
+                        <b>${post.title}</b>
+                    </p>
+                    <p class="post-item">${post.content}...</p>
+                </div>
             </div>
+            </a>
         </div>
       `
 
@@ -153,15 +151,16 @@ function createHtmlFromPost(file, dirPath) {
     const previewImgRegexMatch = output.match(/<PreviewImg>(.*?)<\/PreviewImg>/);
     const previewImgPath = previewImgRegexMatch ? previewImgRegexMatch[1] : 'docs/assets/images/amazon-logo.png';
 
-    
-
-    // console.log("preview: " + previewImgPath)
+    const hidefromBlog = output.match(/!HideFromBlog/);
+    output = output.replace(/!HideFromBlog/, ``);
 
     // Get a teaser from the start of the text of the blog, ignoring the first image
     let contentStartIndex = markdownText.indexOf(':\n<br>\n\n', newTitle.length + 3) + 8;
     let contentPreview = markdownText.substring(contentStartIndex, contentStartIndex + 150).trim();
     const post = new Post(outputFile, newTitle, date, previewImgPath, contentPreview);
-    posts.push(post);
+    if (!hidefromBlog) {
+        posts.push(post);
+    }
 
     // Replace 'docs/assets' links with 'assets'
     output = output.replace(/docs\/assets/g, 'assets');

@@ -1,5 +1,6 @@
 # Photos From Scandinavia
 Date: 11/23/2022
+!HideFromBlog
 
 <PreviewImg>../posts/photos-from-scandinavia/images/Nyhavn_teaser.jpg</PreviewImg>
 

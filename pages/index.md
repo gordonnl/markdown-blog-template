@@ -7,13 +7,12 @@
 <!-- <img src="./assets/images/hello_man.svg" height="170em" width="auto"></img> -->
 <!-- <img src="./assets/images/github_coder.svg" height="220em" width="auto"></img> -->
 
-**Welcome to my blog!**
+## Welcome!
 
 📄&nbsp;  Check out [my resume](?resume) or my [LinkedIn here](https://linkedin.com/in/mattmorgan6).
 
 👨‍💻&nbsp;  View some code I've written on my [Github](https://github.com/mattmorgan6/).
 
-🌎&nbsp; See photos from my recent travels on my [travel page](?photos-from-scandinavia).
 
 <!-- 
     Type &nbsp; to add a single space.
@@ -21,5 +20,11 @@
     Type &emsp; to add 4 spaces.
     You can use non-breaking space (nbsp) 4 times to insert a tab.
 -->
+
+## Featured Projects:
+
+! 3 Blog time !
+
+:: ... read about all my other projects on the [projects page](?projects)! ::
 
 <!-- TODO: add thanks to undraw -->
