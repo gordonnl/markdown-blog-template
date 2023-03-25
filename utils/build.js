@@ -42,7 +42,7 @@ const postList = {
                     <img src="${post.previewImg}"
                         class="preview-img"/>
                 </div>
-                <div>
+                <div class="text-it">
                     <p style="margin-top: 0px; font-size: 18px;">
                         <b>${post.title}</b>
                     </p>

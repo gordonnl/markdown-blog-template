@@ -25,6 +25,6 @@
 
 ! 3 Blog time !
 
-:: ... read about all my other projects on the [projects page](?projects)! ::
+:: ... read all about other projects on my [projects page](?projects)! ::
 
 <!-- TODO: add thanks to undraw -->
