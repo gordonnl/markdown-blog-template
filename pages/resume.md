@@ -8,9 +8,13 @@ Relevant Coursework: *Data Structures, Algorithms, Operating Systems, Database A
 
 ## Professional Experience
 
+%%amazon-section%%
+
 **Amazon, Software Development Engineer Intern**<br>
 *Jun 2022 – Sep 2022 &nbsp;|&nbsp; Seattle, WA*<br>
 - Built a microservice and API with AWS ECS and Java to store actions taken on Amazon order cancellations, deliveries, and data privacy requests. Implemented with an Aurora PostgreSQL database at scale for millions of actions per month.
+
+%%motional-section%%
 
 **Motional, Embedded Software Engineering Intern**<br>
 *Mar 2022 – Jun 2022 &nbsp;|&nbsp; Pittsburgh, PA*<br>
@@ -18,9 +22,12 @@ Relevant Coursework: *Data Structures, Algorithms, Operating Systems, Database A
 - Created a visualization in Python for parallel vision firmware updates that reduced debugging time by about 50%.
 
 **Oregon State University, Undergraduate Machine Learning Researcher**<br>
-*Sep 2021 – Mar 2022 &nbsp;|&nbsp; Corvallis, OR*<br>
-- Constructed a proof of concept food detection computer vision system that aims to notify doctors when hospital patients are at risk for malnutrition.
-- Achieved 91% test accuracy on localizing and classifying 18 different foods with a PyTorch neural network (YOLOR).
+*Sep 2021 – Present &nbsp;|&nbsp; Corvallis, OR*<br>
+- Constructed a food detection computer vision model capable of detecting 254 different foods with PyTorch (YOLOR). 
+- Programmed and deployed Raspberry Pis to send cafeteria tray pictures to a FastAPI Python inference server in Docker on AWS.
+- Presented at the National Conference for Undergraduate Research and Stanford Research Conference.
+
+%%hp-section%%
 
 **HP, Software Engineering Intern**<br>
 *Jun 2021 – Sep 2021 &nbsp;|&nbsp; Remote*

@@ -8,12 +8,13 @@
     <title>Test</title>
     <!-- <link rel="icon" type="image/png" href="assets/images/favicon.png"> -->
     <link href="assets/css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/skeleton.css">
 </head>
 
 <nav>
     <a class="navigation" href=".">home</a>
     <a class="navigation" href="resume.html">resume</a>
-    <a class="navigation" href="blog.html">blog</a>
+    <a class="navigation" href="projects.html">projects</a>
 </nav>
 
 <body>
@@ -25,12 +26,12 @@
 <p><img src="http://blog.ghost.org/content/images/2015/03/markdown-guide-1.jpg" alt="The Ultimate Guide to Markdown"></p>
 <h2 id="basic-markdown-formatting">Basic Markdown Formatting</h2>
 <h3 id="headings">Headings</h3>
-<pre><code># This is an <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span> tag
-## This is an <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span> tag
-### This is an <span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span> tag
-#### This is an <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span> tag
-##### This is an <span class="hljs-tag">&lt;<span class="hljs-name">h5</span>&gt;</span> tag
-###### This is an <span class="hljs-tag">&lt;<span class="hljs-name">h6</span>&gt;</span> tag
+<pre><code># This is an &lt;h1&gt; tag
+## This is an &lt;h2&gt; tag
+### This is an &lt;h3&gt; tag
+#### This is an &lt;h4&gt; tag
+##### This is an &lt;h5&gt; tag
+###### This is an &lt;h6&gt; tag
 </code></pre>
 <h3 id="emphasis">Emphasis</h3>
 <pre><code>*This text will be italic*
@@ -75,19 +76,19 @@ _You **can** combine them_
 <li>Cook delicious things</li>
 </ol>
 <h3 id="images">Images</h3>
-<pre><code>!<span class="hljs-selector-attr">[Alt Text]</span>(<span class="hljs-selector-tag">url</span>)
+<pre><code>![Alt Text](url)
 </code></pre>
 <p>Result:</p>
 <p><img src="http://i.imgur.com/v8IVDka.jpg" alt="m&#39;lady"></p>
 <h3 id="links">Links</h3>
-<pre><code>[link](http:<span class="hljs-comment">//example.com)</span>
+<pre><code>[link](http://example.com)
 </code></pre>
 <p>Result:</p>
 <p><a href="http://example.com">link</a></p>
 <h3 id="blockquotes">Blockquotes</h3>
 <pre><code>As Kanye West said:
 
-&gt; We're living the future so
+&gt; We&#x27;re living the future so
 &gt; the present is our past.
 </code></pre>
 <p>Result:</p>
@@ -105,15 +106,15 @@ the present is our past.</p>
 <pre><code>Indenting by 4 spaces will turn an entire paragraph into a code-block.
 </code></pre>
 <p>Result:</p>
-<pre><code><span class="hljs-selector-class">.my-link</span> {
-    <span class="hljs-attribute">text-decoration</span>: underline;
+<pre><code>.my-link {
+    text-decoration: underline;
 }
 </code></pre>
 <h3 id="reference-lists--titles">Reference Lists &amp; Titles</h3>
-<pre><code>**The quick brown [fox][<span class="hljs-number">1</span>], jumped over the lazy [dog][<span class="hljs-number">2</span>].**
+<pre><code>**The quick brown [fox][1], jumped over the lazy [dog][2].**
 
-[<span class="hljs-number">1</span>]: https:<span class="hljs-comment">//en.wikipedia.org/wiki/Fox "Wikipedia: Fox"</span>
-[<span class="hljs-number">2</span>]: https:<span class="hljs-comment">//en.wikipedia.org/wiki/Dog "Wikipedia: Dog"</span>
+[1]: https://en.wikipedia.org/wiki/Fox &quot;Wikipedia: Fox&quot;
+[2]: https://en.wikipedia.org/wiki/Dog &quot;Wikipedia: Dog&quot;
 </code></pre>
 <p>Result:</p>
 <p><strong>The quick brown <a href="https://en.wikipedia.org/wiki/Fox" title="Wikipedia: Fox">fox</a>, jumped over the lazy <a href="https://en.wikipedia.org/wiki/Dog" title="Wikipedia: Dog">dog</a>.</strong></p>
@@ -123,7 +124,7 @@ the present is our past.</p>
 <p>Result:</p>
 <p>*literally*</p>
 <h3 id="embedding-html">Embedding HTML</h3>
-<pre><code><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"button-save large"</span>&gt;</span>Big Fat Button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+<pre><code>&lt;button class=&quot;button-save large&quot;&gt;Big Fat Button&lt;/button&gt;
 </code></pre>
 <p>Result:</p>
 <p><button class="button-save large">Big Fat Button</button></p>
@@ -141,16 +142,16 @@ the present is our past.</p>
 <p>Result:</p>
 <p>==oooh fancy==</p>
 <h3 id="automatic-links">Automatic Links</h3>
-<pre><code>https:<span class="hljs-comment">//ghost.org</span>
+<pre><code>https://ghost.org
 </code></pre>
 <p>Result:</p>
 <p><a href="https://ghost.org">https://ghost.org</a></p>
 <h3 id="markdown-footnotes">Markdown Footnotes</h3>
 <p>Work in <a href="https://ghost.org/">Ghost</a>:</p>
-<pre><code><span class="hljs-selector-tag">The</span> <span class="hljs-selector-tag">quick</span> <span class="hljs-selector-tag">brown</span> <span class="hljs-selector-tag">fox</span><span class="hljs-selector-attr">[^1]</span> <span class="hljs-selector-tag">jumped</span> <span class="hljs-selector-tag">over</span> <span class="hljs-selector-tag">the</span> <span class="hljs-selector-tag">lazy</span> <span class="hljs-selector-tag">dog</span><span class="hljs-selector-attr">[^2]</span>.
+<pre><code>The quick brown fox[^1] jumped over the lazy dog[^2].
 
-<span class="hljs-selector-attr">[^1]</span>: <span class="hljs-selector-tag">Foxes</span> <span class="hljs-selector-tag">are</span> <span class="hljs-selector-tag">red</span>
-<span class="hljs-selector-attr">[^2]</span>: <span class="hljs-selector-tag">Dogs</span> <span class="hljs-selector-tag">are</span> <span class="hljs-selector-tag">usually</span> <span class="hljs-selector-tag">not</span> <span class="hljs-selector-tag">red</span>
+[^1]: Foxes are red
+[^2]: Dogs are usually not red
 </code></pre>
 <p>Result:</p>
 <p>The quick brown fox[^1] jumped over the lazy dog[^2].</p>
@@ -158,23 +159,23 @@ the present is our past.</p>
 [^2]: Dogs are usually not red</p>
 <h2 id="github-flavored-markdown">GitHub Flavored Markdown</h2>
 <h3 id="syntax-highlighting">Syntax Highlighting</h3>
-<pre><code><span class="hljs-string">``</span><span class="hljs-string">`javascript
+<pre><code>```javascript
 function fancyAlert(arg) {
   if(arg) {
-    $.facebox({div:'#foo'})
+    $.facebox({div:&#x27;#foo&#x27;})
   }
 }
-`</span><span class="hljs-string">``</span>
+```
 </code></pre>
 <p>Result:</p>
-<pre><code class="javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fancyAlert</span>(<span class="hljs-params">arg</span>) </span>{
+<pre><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">fancyAlert</span>(<span class="hljs-params">arg</span>) {
   <span class="hljs-keyword">if</span>(arg) {
-    $.facebox({<span class="hljs-attr">div</span>:<span class="hljs-string">'#foo'</span>})
+    $.<span class="hljs-title function_">facebox</span>({<span class="hljs-attr">div</span>:<span class="hljs-string">&#x27;#foo&#x27;</span>})
   }
 }
 </code></pre>
 <h3 id="task-lists">Task Lists</h3>
-<pre><code><span class="hljs-selector-tag">-</span> <span class="hljs-selector-attr">[x]</span> @<span class="hljs-keyword">mentions</span>, #refs, [links](), **formatting**, and &lt;del&gt;tags&lt;/del&gt; supported
+<pre><code>- [x] @mentions, #refs, [links](), **formatting**, and &lt;del&gt;tags&lt;/del&gt; supported
 - [x] list syntax required (any unordered or ordered list supported)
 - [x] this is a complete item
 - [ ] this is an incomplete item
@@ -206,15 +207,15 @@ function fancyAlert(arg) {
 </tbody></table>
 <h3 id="sha-references">SHA references</h3>
 <p>Any reference to a commit’s SHA-1 hash will be automatically converted into a link to that commit on GitHub.</p>
-<pre><code>16<span class="hljs-selector-tag">c999e8c71134401a78d4d46435517b2271d6ac</span>
-<span class="hljs-selector-tag">mojombo</span>@<span class="hljs-keyword">16c999e8c71134401a78d4d46435517b2271d6ac</span>
-mojombo/github-flavored-markdown@<span class="hljs-number">16</span>c999e8c71134401a78d4d46435517b2271d6ac
+<pre><code>16c999e8c71134401a78d4d46435517b2271d6ac
+mojombo@16c999e8c71134401a78d4d46435517b2271d6ac
+mojombo/github-flavored-markdown@16c999e8c71134401a78d4d46435517b2271d6ac
 </code></pre>
 <h3 id="issue-references-within-a-repository">Issue references within a repository</h3>
 <p>Any number that refers to an Issue or Pull Request will be automatically converted into a link.</p>
-<pre><code><span class="hljs-meta">#1</span>
-mojombo<span class="hljs-meta">#1</span>
-mojombo/github-flavored-markdown<span class="hljs-meta">#1</span>
+<pre><code>#1
+mojombo#1
+mojombo/github-flavored-markdown#1
 </code></pre>
 <h3 id="username-mentions">Username @mentions</h3>
 <p>Typing an <code>@</code> symbol, followed by a username, will notify that person to come and view the comment. This is called an “@mention”, because you’re mentioning the individual. You can also @mention teams within an organization.</p>
