@@ -21,7 +21,7 @@
     <h1 id="visualizing-neural-network-loss-landscapes">Visualizing Neural Network Loss Landscapes</h1>
 <h3 id="january-2023">January 2023</h3>
 <p></p>
-<p><img src="../posts/visualizing-loss-landscapes/images/ResNet-PCA-3d-contours.png" alt="QR Codes">
+<p><img src="./assets/images/post_images/loss_landscapes/ResNet-PCA-3d-contours.png" alt="QR Codes">
 <p style="text-align: center; margin-top:-5px"><i>The path to convergence on a loss landscape.</i></p>
 <br></p>
 <p>Training artificial neural networks is a sensitive process due to architecture choices and hyperparameter tuning. By visualizing both the model’s loss landscape and path during gradient descent towards some local minimum, we can gain intuitions about how tuning and architectural decisions impact the model’s ability to converge. In this project, Chase Ison and I visualize loss landscapes of a convolutional neural network by implementing two separate methods proposed by Li et. al. in &quot;<a href="https://proceedings.neurips.cc/paper/2018/hash/a41b3bb3e6b050b6c9067c67f663b915-Abstract.html">Visualizing the Loss Landscape of Neural Nets</a>.&quot; For each method, we perform dimensionality reduction on a model’s weights during backpropagation, then iteratively manipulate the weights using these techniques to generate scalar fields termed &#39;loss landscapes&#39;. Finally, we evaluate our results on two popular neural network models: ResNet-50 and VGG-11.</p>
@@ -30,7 +30,7 @@
 
 <h4 id="solution-overview">Solution Overview</h4>
 <p>We chose to visualize two convolutional neural networks: ResNet-50 and VGG, each trained to classify images of the CIFAR-10 dataset. For each model, we generated two different loss landscapes from the two techniques detailed by Hao Li et al: <em>random direction iteration</em> and <em>principle component analysis (PCA)</em>.</p>
-<p><img src="../posts/visualizing-loss-landscapes/images/cifar-10-dataset-wide.png" alt="CIFAR-10 dataset examples">
+<p><img src="./assets/images/post_images/loss_landscapes/cifar-10-dataset-wide.png" alt="CIFAR-10 dataset examples">
 <p style="text-align: center; margin-top:-5px"><i>CIFAR-10 dataset examples.</i></p>
 </p>
 <p>Our process for generating the visualization went as follows:</p>
@@ -47,13 +47,13 @@ On the other hand, PCA gave us meaningful insights and allowed us to trace the p
 <br>
 
 <h4 id="results">Results</h4>
-<p><img src="../posts/visualizing-loss-landscapes/images/paper-teaser.png" alt="QR Codes">
+<p><img src="./assets/images/post_images/loss_landscapes/paper-teaser.png" alt="QR Codes">
 <p style="text-align: center; margin-top:-5px"><i>Loss landscapes of the ResNet-50 model from PCA dimensionality reduction, with the gradient decent path.</i></p>
 <br></p>
 <p>The variations of loss landscapes above show that a single picture might not illustrate the 3D topography understandably.
 Our OpenGL code allowed the user to scroll the point-of-view camera around the loss landscape, and change the texture with the click of a button.
 The visualization below highlights local minima that the model may get stuck in while training with too small of a learning rate.</p>
-<p><img src="../posts/visualizing-loss-landscapes/images/ResNet-Random-3d-contours-critical-points.png" alt="QR Codes">
+<p><img src="./assets/images/post_images/loss_landscapes/ResNet-Random-3d-contours-critical-points.png" alt="QR Codes">
 <p style="text-align: center; margin-top:-5px"><i>The 3D loss landscape with critical points labelled for the ResNet-50 model using random direction iteration for dimensionality reduction.</i></p>
 <br></p>
 <h4 id="key-takeaways">Key Takeaways</h4>

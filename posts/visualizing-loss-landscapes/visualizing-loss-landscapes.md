@@ -1,8 +1,8 @@
 # Visualizing Neural Network Loss Landscapes
 Date: 01/03/2023
-<PreviewImg>../posts/visualizing-loss-landscapes/images/ResNet-PCA-3d-contours.png</PreviewImg>
+<PreviewImg>./assets/images/post_images/loss_landscapes/ResNet-PCA-3d-contours.png</PreviewImg>
 
-![QR Codes](../posts/visualizing-loss-landscapes/images/ResNet-PCA-3d-contours.png)
+![QR Codes](./assets/images/post_images/loss_landscapes/ResNet-PCA-3d-contours.png)
 :: The path to convergence on a loss landscape. ::
 <br>
 
@@ -16,7 +16,7 @@ The project was the open-ended final for CS 453 - Scientific Visualization at OS
 
 We chose to visualize two convolutional neural networks: ResNet-50 and VGG, each trained to classify images of the CIFAR-10 dataset. For each model, we generated two different loss landscapes from the two techniques detailed by Hao Li et al: *random direction iteration* and *principle component analysis (PCA)*.
 
-![CIFAR-10 dataset examples](../posts/visualizing-loss-landscapes/images/cifar-10-dataset-wide.png)
+![CIFAR-10 dataset examples](./assets/images/post_images/loss_landscapes/cifar-10-dataset-wide.png)
 :: CIFAR-10 dataset examples. ::
 
 Our process for generating the visualization went as follows:
@@ -36,7 +36,7 @@ On the other hand, PCA gave us meaningful insights and allowed us to trace the p
 
 #### Results
 
-![QR Codes](../posts/visualizing-loss-landscapes/images/paper-teaser.png)
+![QR Codes](./assets/images/post_images/loss_landscapes/paper-teaser.png)
 :: Loss landscapes of the ResNet-50 model from PCA dimensionality reduction, with the gradient decent path. ::
 <br>
 
@@ -46,7 +46,7 @@ Our OpenGL code allowed the user to scroll the point-of-view camera around the l
 The visualization below highlights local minima that the model may get stuck in while training with too small of a learning rate.
 
 
-![QR Codes](../posts/visualizing-loss-landscapes/images/ResNet-Random-3d-contours-critical-points.png)
+![QR Codes](./assets/images/post_images/loss_landscapes/ResNet-Random-3d-contours-critical-points.png)
 :: The 3D loss landscape with critical points labelled for the ResNet-50 model using random direction iteration for dimensionality reduction. ::
 <br>
 

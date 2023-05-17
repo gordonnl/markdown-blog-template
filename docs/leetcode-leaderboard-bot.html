@@ -21,7 +21,7 @@
     <h1 id="leetcode-leaderboard-project">LeetCode Leaderboard Project</h1>
 <h3 id="january-2023">January 2023</h3>
 <p></p>
-<p><img src="../posts/leetcode-leaderboard-bot/images/best-bot-teaser.png" alt="LeetCode Bot Teaser">
+<p><img src="./assets/images/post_images/leetcode_bot/best-bot-teaser.png" alt="LeetCode Bot Teaser">
 <p style="text-align: center; margin-top:-5px"><i>A snippet of the weekly leaderboard.</i></p>
 <br></p>
 <p>The idea for this project came to me shortly after my election to president of the ACM club at Oregon State University. As a student chapter of the greater ACM organization, our group specifically focuses on competitive programming and technical interview prep. 
@@ -39,10 +39,10 @@ I wanted a way to motivate the members to practice solving problems in their fre
 The first thing to tackle was determining a way to get specific user data from leetcode.com. The nice thing is that problem submissions are public across all accounts. I popped open a browser and inspected the network requests and found a graphql query <code>getRecentSubmissionList</code>, which will get a list of submissions for a specific user. </p>
 <p><strong>2. Coding up the Discord bot</strong><br>
 I decided to go with Python3 and the <a href="https://discordpy.readthedocs.io/en/stable/">discord.py</a> library. My vision for the bot was two-fold. First, once a week, the bot would autonomously post a leaderboard of how many problems a person solved. Secondly, users could run a command such as <code>!get user1</code> and the bot would print the most recent problem that user1 has solved. This came in handy during ACM meetings when people wanted to see what their friends were recently working on and what language they used.</p>
-<p><img src="../posts/leetcode-leaderboard-bot/images/bot-available-commands.png" alt="QR Codes">
+<p><img src="./assets/images/post_images/leetcode_bot/bot-available-commands.png" alt="QR Codes">
 <p style="text-align: center; margin-top:-5px"><i>A list of available commands for the LeetCode bot.</i></p>
 <br></p>
-<p><img src="../posts/leetcode-leaderboard-bot/images/bot-recent.png" alt="QR Codes">
+<p><img src="./assets/images/post_images/leetcode_bot/bot-recent.png" alt="QR Codes">
 <p style="text-align: center; margin-top:-5px"><i>Getting the most recent submission for a user.</i></p>
 <br></p>
 <p><strong>3. Parallelization</strong><br>
