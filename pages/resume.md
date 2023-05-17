@@ -3,10 +3,16 @@
 ## Education
 
 **B.S. Computer Science at Oregon State University**<br>
-**4.0 GPA &nbsp; - &nbsp; Expected Graduation: June 2023**<br>
+**4.0 GPA &nbsp; - &nbsp; Graduation: June 2023**<br>
 Relevant Coursework: *Data Structures, Algorithms, Operating Systems, Database Architectures, Intro to Machine Learning*
 
 ## Professional Experience
+
+**Oregon State University, Undergraduate Machine Learning Researcher**<br>
+*Sep 2021 – Present &nbsp;|&nbsp; Corvallis, OR*<br>
+- Constructed a food detection computer vision model capable of detecting 254 different foods with PyTorch (YOLOR). 
+- Programmed and deployed Raspberry Pis to send cafeteria tray pictures to a FastAPI Python inference server in Docker on AWS.
+- Presented at the National Conference for Undergraduate Research and Stanford Research Conference.
 
 %%amazon-section%%
 
@@ -20,12 +26,6 @@ Relevant Coursework: *Data Structures, Algorithms, Operating Systems, Database A
 *Mar 2022 – Jun 2022 &nbsp;|&nbsp; Pittsburgh, PA*<br>
 - Developed a scalable data pipeline with AWS API Gateway, Lambda, and an Aurora PostgreSQL database to collect and store metrics on vision firmware updates. Created a Redash dashboard to spotlight release deployment issues.
 - Created a visualization in Python for parallel vision firmware updates that reduced debugging time by about 50%.
-
-**Oregon State University, Undergraduate Machine Learning Researcher**<br>
-*Sep 2021 – Present &nbsp;|&nbsp; Corvallis, OR*<br>
-- Constructed a food detection computer vision model capable of detecting 254 different foods with PyTorch (YOLOR). 
-- Programmed and deployed Raspberry Pis to send cafeteria tray pictures to a FastAPI Python inference server in Docker on AWS.
-- Presented at the National Conference for Undergraduate Research and Stanford Research Conference.
 
 %%hp-section%%
 
