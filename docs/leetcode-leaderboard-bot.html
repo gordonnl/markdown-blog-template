@@ -25,7 +25,7 @@
 <p style="text-align: center; margin-top:-5px"><i>A snippet of the weekly leaderboard.</i></p>
 <br></p>
 <p>The idea for this project came to me shortly after my election to president of the ACM club at Oregon State University. As a student chapter of the greater ACM organization, our group specifically focuses on competitive programming and technical interview prep. 
-I wanted a way to motivate the members to practice solving problems in their free time to prepare for upcoming competitions as well as software engineering interviews at big name companies. Since our club uses a Discord server for communication, I figured it was the perfect opportunity to learn to write a bot.</p>
+I wanted a way to motivate the members to practice solving problems in their free time to prepare for upcoming competitions as well as software engineering interviews at big-name companies. Since our club uses a Discord server for communication, I figured it was the perfect opportunity to learn to write a bot.</p>
 <br>
 
 <h4 id="the-idea">The Idea</h4>
@@ -46,14 +46,14 @@ I decided to go with Python3 and the <a href="https://discordpy.readthedocs.io/e
 <p style="text-align: center; margin-top:-5px"><i>Getting the most recent submission for a user.</i></p>
 <br></p>
 <p><strong>3. Parallelization</strong><br>
-Because each request would only fetch problem submissions for a specific user, it would take minutes to get the data sequentially for a weekly leaderboard. Instead, I used the <a href="https://github.com/spyoungtech/grequests">grequests library</a> to make asyncronous requests in parallel which reduced the time to fetch data by 100x.</p>
+Because each request would only fetch problem submissions for a specific user, it would take minutes to get the data sequentially for a weekly leaderboard. Instead, I used the <a href="https://github.com/spyoungtech/grequests">grequests library</a> to make asynchronous requests in parallel which reduced the time to fetch data by 100x.</p>
 <p><strong>4. Unit tests</strong><br>
 Adding unit tests was important for the reliability of the project as well as a good skill to practice. The <a href="https://docs.pytest.org/en/7.2.x/">pytest library</a> was especially nice for mocking GET requests and file reads.</p>
 <br>
 
 <h4 id="key-takeaways">Key takeaways</h4>
 <p>This was a big project for me because it was the first outside of the workplace that I had developed for real users. I found a problem to solve, devised a solution, learned the necessary skills, and maintained the project for multiple years. </p>
-<p>In the end, the bot boosted motivation for club members to practice problem solving. OSU ACM <a href="http://acm.oregonstate.edu/">swept Oregon Division 1 and Division 2 of the International Collegiate Programming Contest in 2020</a>. Moreover, in the following year, a record 9 teams from OSU competed at ICPC NW!</p>
+<p>In the end, the bot boosted the motivation of club members to practice problem-solving. OSU ACM <a href="http://acm.oregonstate.edu/">swept Oregon Division 1 and Division 2 of the International Collegiate Programming Contest in 2020</a>. Moreover, in the following year, a record 9 teams from OSU competed at ICPC NW!</p>
 <p>You can find the entire codebase in the <a href="https://github.com/osu-acm/LeetCode_Tracker">github repo linked here</a>.</p>
 <p><br><a href="index.html">back to home</a></p>
 

@@ -7,7 +7,7 @@ Date: 01/03/2023
 <br>
 
 The idea for this project came to me shortly after my election to president of the ACM club at Oregon State University. As a student chapter of the greater ACM organization, our group specifically focuses on competitive programming and technical interview prep. 
-I wanted a way to motivate the members to practice solving problems in their free time to prepare for upcoming competitions as well as software engineering interviews at big name companies. Since our club uses a Discord server for communication, I figured it was the perfect opportunity to learn to write a bot.
+I wanted a way to motivate the members to practice solving problems in their free time to prepare for upcoming competitions as well as software engineering interviews at big-name companies. Since our club uses a Discord server for communication, I figured it was the perfect opportunity to learn to write a bot.
 
 <br>
 
@@ -35,7 +35,7 @@ I decided to go with Python3 and the [discord.py](https://discordpy.readthedocs.
 
 
 **3. Parallelization**<br>
-Because each request would only fetch problem submissions for a specific user, it would take minutes to get the data sequentially for a weekly leaderboard. Instead, I used the [grequests library](https://github.com/spyoungtech/grequests) to make asyncronous requests in parallel which reduced the time to fetch data by 100x.
+Because each request would only fetch problem submissions for a specific user, it would take minutes to get the data sequentially for a weekly leaderboard. Instead, I used the [grequests library](https://github.com/spyoungtech/grequests) to make asynchronous requests in parallel which reduced the time to fetch data by 100x.
 
 
 **4. Unit tests**<br>
@@ -48,7 +48,7 @@ Adding unit tests was important for the reliability of the project as well as a 
 
 This was a big project for me because it was the first outside of the workplace that I had developed for real users. I found a problem to solve, devised a solution, learned the necessary skills, and maintained the project for multiple years. 
 
-In the end, the bot boosted motivation for club members to practice problem solving. OSU ACM [swept Oregon Division 1 and Division 2 of the International Collegiate Programming Contest in 2020](http://acm.oregonstate.edu/). Moreover, in the following year, a record 9 teams from OSU competed at ICPC NW!
+In the end, the bot boosted the motivation of club members to practice problem-solving. OSU ACM [swept Oregon Division 1 and Division 2 of the International Collegiate Programming Contest in 2020](http://acm.oregonstate.edu/). Moreover, in the following year, a record 9 teams from OSU competed at ICPC NW!
 
 You can find the entire codebase in the [github repo linked here](https://github.com/osu-acm/LeetCode_Tracker).
 
