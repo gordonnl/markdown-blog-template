@@ -35,19 +35,17 @@ const postList = {
         for (let i = 0; i < numPosts; i++) {
             const post = posts[i];
             htmlString += `
-        <div class="post-item">
+        <div class="row project-teaser-container">
             <a class="post-item-link" href="${post.filepath}">
-            <div class="post-item-container">
-                <div class="preview-img-container">
-                    <img src="${post.previewImg}"
-                        class="preview-img"/>
-                </div>
-                <div class="text-it">
-                    <p style="margin-top: 0px; font-size: 18px;">
-                        <b>${post.title}</b>
-                    </p>
-                    <p class="post-item">${post.content}...</p>
-                </div>
+            <div class="four columns preview-img-container">
+                <img src="${post.previewImg}"
+                    class="preview-img"/>
+            </div>
+            <div class="eight columns">
+                <p class="project-title">
+                    <b>${post.title}</b>
+                </p>
+                <p class="project-subtitle">${post.content}...</p>
             </div>
             </a>
         </div>
@@ -76,7 +74,7 @@ class Post {
 }
 
 // Add extensions (custom markdown token parsing)
-marked.use({ extensions: [extns.imageCaption, postList] });
+marked.use({ extensions: [extns.imageCaption, extns.customId, postList] });
 
 marked.setOptions({
     renderer: new marked.Renderer(),

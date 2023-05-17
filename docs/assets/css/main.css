@@ -356,7 +356,7 @@ div.post-item {
     border-radius: 10px;
 }
 
-div.post-item2 {
+div.project-subtitle {
     border-radius: 10px;
 }
 
@@ -372,7 +372,7 @@ p.post-item {
     text-decoration: none;
     margin-top: 1em;
 }
-p.post-item2 {
+p.project-subtitle {
     font-size: medium;
     margin-bottom: 1em;
     text-decoration: none;
@@ -431,7 +431,7 @@ p.post-item2 {
     border-radius: 8px;
 }
 
-.preview-img2 {
+.logo-img {
     /* display: block; */
     max-width: 180px;
     max-height: 64px;
@@ -441,7 +441,6 @@ p.post-item2 {
     /* float: right; */
     /* margin-right: 20px; */
 }
-
 
 
 .text-it {
@@ -469,12 +468,43 @@ hr {
 } */
 
 
-.experience2 {
+.work-teaser-container {
     margin-bottom: 0px;
     min-height: 100px;
 }
 
-.experience {
+.project-teaser-container {
     margin-bottom: 30px;
     min-height: 110px;
+    /* border: 1px solid #E1E1E1; */
+    /* border-radius: 10px; */
+}
+
+.linkIcon {
+    height: 10px;
+    width: 10px;
+    margin-bottom: 1px;
+    margin-left: 10px;
+}
+
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.footer-icon {
+    height: 30px;
+    width: 30px;
+    color: #363c3c;
+}
+
+.project-title {
+    margin-top: 0px;
+    font-size: 18px;
+}
+
+.continue-reading {
+    text-align: center;
+    margin-top:-5px
 }
