@@ -4,7 +4,7 @@
 
 **B.S. Computer Science at Oregon State University**<br>
 **4.0 GPA &nbsp; - &nbsp; Graduation: June 2023**<br>
-Relevant Coursework: *Data Structures, Algorithms, Operating Systems, Database Architectures, Intro to Machine Learning*
+Relevant Coursework: *Data Structures, Algorithms, Operating Systems, Database Architectures, Intro to Machine Learning, Advanced Web Dev (React)*
 
 ## Professional Experience
 
@@ -60,15 +60,18 @@ Relevant Coursework: *Data Structures, Algorithms, Operating Systems, Database A
 
 
 ## Projects
-**Satellite Image Classifier**<br>
-*May 2021 – May 2021*
-- Trained and tuned a TensorFlow CNN model to classify satellite images as barren, forest, grass, or other with 98.6% acc.
+Take a peek at my [projects page!](projects.html)
 
 
 ## Leadership
 
+**Social Services Volunteer, St. Vincent de Paul**<br>
+*Jan 2023 – Present*
+- Weekly volunteer to help community members find safe living, pay off bills, and obtain essential living needs.
+- Created an Airtable interface for client records, enabling volunteers to query history and serve clients at a 30% faster rate.
+
 **Treasurer, OSU Newman Center**<br>
-*Dec 2020 – Present*
+*Dec 2020 – Dec 2022*
 - Increased grant funding by 250% and founded a new project to serve the homeless monthly in Portland, OR.
 
 **President, OSU Assoc. for Computing Machinery**<br>
