@@ -43,7 +43,7 @@ const postList = {
             </div>
             <div class="eight columns">
                 <p class="project-title">
-                    <b>${post.title}</b>
+                    <b>${post.title} <span><img src="assets/css/arrow-up-right-from-square-solid.svg" class="linkIcon" alt="${post.title} Project Teaser Image"></span></b>
                 </p>
                 <p class="project-subtitle">${post.content}...</p>
             </div>
