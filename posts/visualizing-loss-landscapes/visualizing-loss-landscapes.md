@@ -6,7 +6,7 @@ Date: 01/03/2023
 :: The path to convergence on a loss landscape. ::
 <br>
 
-Training artificial neural networks is a sensitive process due to architecture choices and hyperparameter tuning. By visualizing both the model’s loss landscape and path during gradient descent towards some local minimum, we can gain intuitions about how tuning and architectural decisions impact the model’s ability to converge. In this project, Chase Ison and I visualize loss landscapes of a convolutional neural network by implementing two separate methods proposed by Li et. al. in "[Visualizing the Loss Landscape of Neural Nets](https://proceedings.neurips.cc/paper/2018/hash/a41b3bb3e6b050b6c9067c67f663b915-Abstract.html)." For each method, we perform dimensionality reduction on a model’s weights during backpropagation, then iteratively manipulate the weights using these techniques to generate scalar fields termed 'loss landscapes'. Finally, we evaluate our results on two popular neural network models: ResNet-50 and VGG-11.
+Training artificial neural networks is a sensitive process due to architecture choices and hyperparameter tuning. By visualizing both the model’s loss landscape and path during gradient descent towards some local minimum, we can gain intuitions about how tuning and architectural decisions impact the model’s ability to converge. In this project, Chase Ison and I visualize loss landscapes of a convolutional neural network by implementing two separate methods proposed by Li et. al. in "[Visualizing the Loss Landscape of Neural Nets](https://proceedings.neurips.cc/paper/2018/hash/a41b3bb3e6b050b6c9067c67f663b915-Abstract.html)." For each method, we evaluate our results on two popular neural network models: ResNet-50 and VGG-11.
 
 The project was the open-ended final for CS 453 - Scientific Visualization at OSU in fall 2022. This post will just be a quick overview of the project and some of our results.
 
@@ -14,7 +14,7 @@ The project was the open-ended final for CS 453 - Scientific Visualization at OS
 
 #### Solution Overview
 
-We chose to visualize two convolutional neural networks: ResNet-50 and VGG, each trained to classify images of the CIFAR-10 dataset. For each model, we generated two different loss landscapes from the two techniques detailed by Hao Li et al: *random direction iteration* and *principle component analysis (PCA)*.
+We chose to visualize two convolutional neural networks: ResNet-50 and VGG, each trained to classify images of the CIFAR-10 dataset. For each model, we generated two different loss landscapes from the techniques detailed by Hao Li et al: *random direction iteration* and *principle component analysis (PCA)*.
 
 ![CIFAR-10 dataset examples](./assets/images/post_images/loss_landscapes/cifar-10-dataset-wide.png)
 :: CIFAR-10 dataset examples. ::
@@ -29,7 +29,6 @@ Our process for generating the visualization went as follows:
 You might be wondering why we use two different versions of dimensionality reduction.
 Random direction iteration is essentially the simple way to generate a loss landscape, which was nice to do first just to make sure we were getting a good result.
 On the other hand, PCA gave us meaningful insights and allowed us to trace the path of the model converging as it minimized the loss.
-
 
 
 <br>
