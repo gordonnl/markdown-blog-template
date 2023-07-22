@@ -358,6 +358,7 @@ div.post-item {
 
 div.project-subtitle {
     border-radius: 10px;
+    margin-bottom: "10px";
 }
 
 h2,
@@ -500,7 +501,7 @@ hr {
 }
 
 .project-title {
-    margin-top: 0px;
+    margin-top: 10px;
     font-size: 18px;
 }
 
