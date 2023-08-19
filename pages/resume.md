@@ -4,12 +4,12 @@
 
 **B.S. Computer Science at Oregon State University**<br>
 **4.0 GPA &nbsp; - &nbsp; Graduation: June 2023**<br>
-Relevant Coursework: *Data Structures, Algorithms, Operating Systems, Database Architectures, Intro to Machine Learning, Advanced Web Dev (React)*
+Relevant Coursework: *Data Structures, Algorithms, Operating Systems, Database Architectures, Intro to Machine Learning, ML Security and Attacks*
 
 ## Professional Experience
 
 **Oregon State University, Undergraduate Machine Learning Researcher**<br>
-*Sep 2021 – Present &nbsp;|&nbsp; Corvallis, OR*<br>
+*Sep 2021 – Jun 2023 &nbsp;|&nbsp; Corvallis, OR*<br>
 - Constructed a food detection computer vision model capable of detecting 254 different foods with PyTorch (YOLOR). 
 - Programmed and deployed Raspberry Pis to send cafeteria tray pictures to a FastAPI Python inference server in Docker on AWS.
 - Presented at the National Conference for Undergraduate Research and Stanford Research Conference.
@@ -66,7 +66,7 @@ Take a peek at my [projects page!](projects.html)
 ## Leadership
 
 **Social Services Volunteer, St. Vincent de Paul**<br>
-*Jan 2023 – Present*
+*Jan 2023 – Jun 2023*
 - Weekly volunteer to help community members find safe living, pay off bills, and obtain essential living needs.
 - Created an Airtable interface for client records, enabling volunteers to query history and serve clients at a 30% faster rate.
 
