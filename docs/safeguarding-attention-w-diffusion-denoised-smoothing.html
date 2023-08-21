@@ -24,40 +24,29 @@
 <p><img src="./assets/images/post_images/safeguarding-attention-w-diffusion-denoised-smoothing/experiment-design.png" alt="Expirment design flowchart">
 <p style="text-align: center; margin-top:-5px"><i>Experiment design.</i></p>
 <br></p>
-<p>Training artificial neural networks is a sensitive process due to architecture choices and hyperparameter tuning. By visualizing both the model’s loss landscape and path during gradient descent towards some local minimum, we can gain intuitions about how tuning and architectural decisions impact the model’s ability to converge. In this project, Chase Ison and I visualize loss landscapes of a convolutional neural network by implementing two separate methods proposed by Li et. al. in &quot;<a href="https://proceedings.neurips.cc/paper/2018/hash/a41b3bb3e6b050b6c9067c67f663b915-Abstract.html">Visualizing the Loss Landscape of Neural Nets</a>.&quot; For each method, we evaluate our results on two popular neural network models: ResNet-50 and VGG-11.</p>
-<p>The project was the open-ended final for CS 453 - Scientific Visualization at OSU in fall 2022. This post will just be a quick overview of the project and some of our results.</p>
+<p>Adversarial images caused by perturbations are a classic case of exploiting a computer vision model to predict the wrong thing, even while the image looks fairly normal to the naked eye. For this project, we study a defense against a variation of this attack called PGD or Project Gradient Descent. PGD adds noise to the image in small but specific ways that cause misclassification. As a defense, Carlini et al. present in their 2022 paper &quot;<a href="https://arxiv.org/abs/2206.10550">Certified! Adversarial Robustness for Free!</a>&quot; that by using diffusion denoised smoothing we can denoise the image in a single shot before predictions and obtain a much higher accuracy on adversarial images. What we study in this project is the effect of denoised smoothing as a defense against PGD on attention-based models. Attention mechanisms, largely used within the context of natural language processing, help models identify and focus on the most relevant parts of input data while making predictions. In recent years, these mechanisms are seeing increased usage outside of natural language processing, including in image classification. Gaining an understanding of the usefulness of diffusion denoised smoothing for attacks on attention-based models will help data scientists and ML engineers determine an optimal defense to use when protecting their cutting-edge model.</p>
 <br>
 
-<h4 id="solution-overview">Solution Overview</h4>
-<p>We chose to visualize two convolutional neural networks: ResNet-50 and VGG, each trained to classify images of the CIFAR-10 dataset. For each model, we generated two different loss landscapes from the techniques detailed by Hao Li et al: <em>random direction iteration</em> and <em>principle component analysis (PCA)</em>.</p>
+<h4 id="project-implementation">Project Implementation</h4>
+<p>In this post, I will give a high-level overview of the project and our results, but I recommend you read our <a href="https://github.com/mattmorgan6/Safeguarding-Attention-With-Diffusion-Denoised-Smoothing/blob/main/Safeguarding-Attention-With-Diffusion-Denoised-Smoothing.pdf">final paper here</a> for all the details.</p>
+<p>We opted to study two different models and corresponding datasets: CBAM+ResNet-50 with CIFAR-10 dataset, along with a pre-trained HuggingFace coatnet <em>rmlp_2_rw_384.sw_in12k_ft_in1k</em> model for the ImageNet-1k dataset.</p>
+<p>Our procedure for the experiment was to first attack a portion of our dataset with various intensities of PGD. The more intense the epsilon value, the lower the classification score of the model, but also the more noisy the image becomes, ruining the ability for the attack to fly under the radar of a human verifier. Then we would feed the data into two channels. Channel 1 would run the data through the attention network and calculate our accuracy. Channel 2 would apply denoise smoothing as a defense against the attack, then run the denoised images through the attention network and calculate accuracy so we may compare Channel 1 and Channel 2.</p>
+<p>Our CBAM+ResNet-50 model is unique in that we can also obtain a model of simply ResNet-50. This allows us to compare a traditional CNN against a CNN with attention mechanisms. The images below demonstrate the effect of PGD on images that are passed through ResNet-50 without CBAM. As the epsilon value of the attack increases, the feature map changes shape. Perhaps we can use denoised smoothing and attention models to prevent this shift.</p>
 <p><img src="./assets/images/post_images/safeguarding-attention-w-diffusion-denoised-smoothing/attention-map.png" alt="Attention maps">
 <p style="text-align: center; margin-top:-5px"><i>Spacial attention maps.</i></p>
 </p>
-<p>Our process for generating the visualization went as follows:</p>
-<ol>
-<li>Train a model.</li>
-<li>Perform dimensionality reduction to two vectors using either the random direction approach or PCA approach.</li>
-<li>Iterate over a 25x25 square of points across the plane of those two vectors, calculate the loss at each point, saving each (x, y, loss) tuple to our results matrix.</li>
-<li>Export the results to a PLY file.</li>
-<li>Visualize the PLY file in OpenGL, using different techniques to produce different visualizations, such as marching squares to visualize contour lines.</li>
-</ol>
-<p><img src="./assets/images/post_images/safeguarding-attention-w-diffusion-denoised-smoothing/image-results.png" alt="Example images of defense against PGD attack">
-<p style="text-align: center; margin-top:-5px"><i>A successful prevention of a PGD attack by using denoised diffusion. Parameters of σ = 0.25, ε = 0.01.</i></p>
-<br></p>
-<p>You might be wondering why we use two different versions of dimensionality reduction.
-Random direction iteration is essentially the simple way to generate a loss landscape, which was nice to do first just to make sure we were getting a good result.
-On the other hand, PCA gave us meaningful insights and allowed us to trace the path of the model converging as it minimized the loss.</p>
+<p>While the CIFAR-10 dataset contains 10 classes of small images, the ImageNet-1k dataset has 1,000 classes. Some classes are quite similar, for example, <em>bernese_mountain_dog</em> and <em>greater-swiss_mountain_dog</em>. In the image below, you can see that after PGD is applied to the input image, it becomes much darker and a bit noisier, which causes our prediction to change to <em>greater-swiss_mountain_dog</em>. Incorrect! But after applying denoised smoothing, our prediction is corrected to <em>bernese_mountain_dog</em>!</p>
 <br>
 
 <h4 id="results">Results</h4>
+<p>Instead of just looking at cherry-picked examples, let&#39;s focus on our overall data. We are able to modify the sigma parameter of our diffusion denoised smoothing model to set how much to &quot;smooth&quot; the images. Thus, we plotted the increasing strength of the PGD attack on the x-axis against two different strengths of smoothing 0.25 and 0.5. We found that values higher than 0.5 only degraded the performance of the model, and omitted them from the chart. On the y-axis, is the model accuracy, which we want as high as possible!</p>
 <p><img src="./assets/images/post_images/safeguarding-attention-w-diffusion-denoised-smoothing/result-graphs.png" alt="Result graphs">
 <p style="text-align: center; margin-top:-5px"><i></i></p>
 <br></p>
-<p>The variations of loss landscapes above show that a single picture might not illustrate the 3D topography understandably.
-Our OpenGL code allowed the user to scroll the point-of-view camera around the loss landscape, and change the texture with the click of a button.
-The visualization below highlights local minima that the model may get stuck in while training with too small of a learning rate.</p>
+<p>On the first row of graphs, we have two graphs, of our accuracy on the ImageNet dataset. The gap between the yellow curve and red curve shows that our denoised smoothing defense worked successfully, increasing accuracy from around 0.25 to 0.70. However, our baseline on clean images was around 0.85, so we were unable to achieve a perfect defense. Accuracy also slightly decreases with a sigma value of 0.5 vs. 0.25.</p>
+<p>In the second row of graphs, we compare our defenses on ResNet-50 with and without CBAM. While not quite as successful as with ImageNet-1k, our defense increases accuracy from 0 (where epsilon &gt; 0.01) to around 0.25 for both CBAM and without. It turns out that CBAM+ResNet-50 actually scored marginally better after denoising than without it, indicating that diffusion denoised smoothing may be a wise defense for attention-based models.</p>
 <h4 id="key-takeaways">Key Takeaways</h4>
-<p>This project pushed me to understand dimensionality reduction as well as what we can learn from loss landscapes. It stressed a lot of different skills- being able to write PyTorch code, being able to write dimensionality reduction code, train the models on a high-performance cluster, format the data, and visualize it with custom OpenGL code. I&#39;m thankful to have had Chase as my project partner to collaborate with!</p>
+<p>While we worked with small subsets of the data, the project allowed us to explore a new area of research, with diffusion denoised smoothing just released within the last year (2022)! Our experiments show a small increase in recovered accuracy (at most 5%) when comparing our attention model to a vanilla model under attack. In the class, I learned a variety of attacks and defenses, from data poisoning to membership inference attacks. The project taught me how to write a PGD attack from scratch with PyTorch, both train a model and use a pre-trained model, run an experiment lasting multiple days, and manage the data cleanly and effectively for our purpose! I look forward to seeing where the machine learning expertise will take me. If there is one thing I&#39;ve learned, it&#39;s that we cannot assume things are safe from attackers, even just the smallest vulnerability may be exploited.</p>
 <p><br><a href="index.html">back to home</a></p>
 
 </body>
