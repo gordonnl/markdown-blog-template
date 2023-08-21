@@ -22,7 +22,7 @@ Our procedure for the experiment was to first attack a portion of our dataset wi
 Our CBAM+ResNet-50 model is unique in that we can also obtain a model of simply ResNet-50. This allows us to compare a traditional CNN against a CNN with attention mechanisms. The images below demonstrate the effect of PGD on images that are passed through ResNet-50 without CBAM. As the epsilon value of the attack increases, the feature map changes shape. Perhaps we can use denoised smoothing and attention models to prevent this shift.
 
 ![Attention maps](./assets/images/post_images/safeguarding-attention-w-diffusion-denoised-smoothing/attention-map.png)
-:: Spacial attention maps. ::
+:: Feature map at different epsilon values. ::
 
 While the CIFAR-10 dataset contains 10 classes of small images, the ImageNet-1k dataset has 1,000 classes. Some classes are quite similar, for example, *bernese_mountain_dog* and *greater-swiss_mountain_dog*. In the image below, you can see that after PGD is applied to the input image, it becomes much darker and a bit noisier, which causes our prediction to change to *greater-swiss_mountain_dog*. Incorrect\! But after applying denoised smoothing, our prediction is corrected to *bernese_mountain_dog*\!
 
