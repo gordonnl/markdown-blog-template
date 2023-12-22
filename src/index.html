@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Basic HTML/Tailwind starter</title>
+  <meta name="description" content="Basic HTML/Tailwind starter" />
+  <meta name="author" content="Daily Dev Tips" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="main.css" />
+</head>
+<nav class="mt-8">
+  <a class="navigation text-lg" href=".">home</a>
+  <a class="navigation text-lg" href="resume.html">resume</a>
+  <a class="navigation text-lg" href="projects.html">projects</a>
+</nav>
+
+<body>
+  <h1 id="matthew-morgan">Matthew Morgan</h1>
+  <h3 id="student-at-oregon-state-university">New Graduate from Oregon State University</h3>
+  <p><img src="./assets/images/coding_guy_1.svg" class="h-40 my-10 mx-auto" alt="Graphic of person at laptop"></img></p>
+
+  <!-- 
+    Type &nbsp; to add a single space.
+    Type &ensp; to add 2 spaces.
+    Type &emsp; to add 4 spaces.
+    You can use non-breaking space (nbsp) 4 times to insert a tab.
+-->
+
+  <h2 id="featured-projects">Recent Experience:</h2>
+
+  <div class="px-12 md:px-0">
+    <div class="flex flex-col sm:flex-row mt-8 gap-y-6">
+      <div class="w-full sm:w-1/3 sm:mb-0 my-auto">
+        <img src="./assets/images/amazon-logo.png" class="w-40  mx-auto" alt="Amazon Logo" />
+      </div>
+
+      <div class="w-full sm:w-2/3 my-auto">
+        <div>
+          <p class="text-lg">
+            <b>Software Development Engineer Intern <img src="assets/css/arrow-up-right-from-square-solid.svg"
+                class="w-2.5 inline-block mb-0.5 ml-1" alt="Link icon to resume details" /></b>
+          </p>
+          <p class="project-subtitle">Jun 2022 - Sep 2022 | Seattle, WA </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row mt-8 gap-y-6">
+      <div class="w-full sm:w-1/3 my-auto sm:mb-0">
+        <img src="./assets/images/motional-logo-vertical.png" class="w-20 mx-auto" alt="Motional Logo" />
+      </div>
+
+      <div class="w-full sm:w-2/3 my-auto">
+        <div>
+          <p class="text-lg">
+            <b>Software Engineering Intern <img src="assets/css/arrow-up-right-from-square-solid.svg"
+                class="w-2.5 inline-block mb-0.5 ml-1" alt="Link icon to resume details" /></b>
+          </p>
+          <p class="project-subtitle">Mar 2022 – Jun 2022 | Pittsburgh, PA </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="flex flex-col sm:flex-row mt-12 mb-4 gap-y-6">
+      <div class="w-full sm:w-1/3 my-auto sm:mb-0">
+        <img src="./assets/images/HP_logo_black.svg" class="w-14 mx-auto" alt="HP Logo" />
+      </div>
+
+      <div class="w-full sm:w-2/3 my-auto">
+        <div>
+          <p class="text-lg">
+            <b>Software Engineering Intern <img src="assets/css/arrow-up-right-from-square-solid.svg"
+                class="w-2.5 inline-block mb-0.5 ml-1" alt="Link icon to resume details" /></b>
+          </p>
+          <p class="project-subtitle">Mar 2021 – Jun 2021 | Corvallis, OR</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <p>
+  <p class="text-center mt-10"><i>... see more on my <a href="resume.html" class="underline"">resume page</a>!</i></p>
+  <br>
+
+  <h2 id=" featured-projects">Featured Projects:</h2>
+
+        <div class="px-12 md:px-0">
+          <div class="mt-8 gap-y-6">
+            <a class="post-item-link" href="leetcode-leaderboard-bot.html">
+              <div class="flex flex-col sm:flex-row my-auto">
+                <div class="w-full sm:w-1/3 mb-4 sm:mb-0">
+                  <img src="./assets/images/post_images/leetcode_bot/best-bot-teaser-cropped.png"
+                    class="h-20 mx-auto rounded-lg" />
+                </div>
+                <div class="w-full sm:w-2/3 my-auto">
+                  <div>
+                    <p class="text-lg">
+                      <b>LeetCode Leaderboard Project <img src="assets/css/arrow-up-right-from-square-solid.svg"
+                          class="w-2.5 inline-block mb-0.5 ml-1" alt="Link icon to project blog post" /></b>
+                    </p>
+                    <p class="project-subtitle">The idea for this project came to me shortly after my election to
+                      president of
+                      the
+                      ACM club at Oregon State University. As a student chapter of the gr...</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="mt-14 gap-y-6">
+            <a class="post-item-link" href="safeguarding-attention-w-diffusion-denoised-smoothing.html">
+              <div class="flex flex-col sm:flex-row my-auto">
+                <div class="w-full sm:w-1/3 mb-4 sm:mb-0">
+                  <img
+                    src="./assets/images/post_images/safeguarding-attention-w-diffusion-denoised-smoothing/attention-map-thumbnail.png"
+                    class="h-20 mx-auto" />
+                </div>
+                <div class="w-full sm:w-2/3 my-auto">
+                  <div>
+                    <p class="text-lg">
+                      <b>Safeguarding Attention With Diffusion Denoised Smoothing <img
+                          src="assets/css/arrow-up-right-from-square-solid.svg" class="w-2.5 inline-block mb-0.5 ml-1"
+                          alt="Link icon to project blog post" /></b>
+                    </p>
+
+                    <p class="project-subtitle">Adversarial images caused by perturbations are a classic case of
+                      exploiting a
+                      computer vision model to predict the wrong thing, even while the image looks fairly normal...</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="mt-14 gap-y-6">
+            <a class="post-item-link" href="visualizing-loss-landscapes.html">
+              <div class="flex flex-col sm:flex-row my-auto">
+                <div class="w-full sm:w-1/3 mb-4 sm:mb-0">
+                  <img src="./assets/images/post_images/loss_landscapes/ResNet-PCA-3d-contours.png"
+                    class="h-20 mx-auto" />
+                </div>
+                <div class="w-full sm:w-2/3 my-auto">
+                  <div>
+                    <p class="text-lg">
+                      <b>Visualizing Neural Network Loss Landscapes <img
+                          src="assets/css/arrow-up-right-from-square-solid.svg" class="w-2.5 inline-block mb-0.5 ml-1"
+                          alt="Link icon to project blog post" /></b>
+                    </p>
+                    <p class="project-subtitle">Training artificial neural networks is a sensitive process due to
+                      architecture
+                      choices and hyperparameter tuning. By visualizing both the model’s loss...</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+
+
+        <p class="text-center mt-10"><i>... see more on my <a href="projects.html" class="underline">projects
+              page</a>!</i></p>
+  </p>
+
+
+  <hr class="mt-12" />
+
+
+  <h2 id="featured-projects">About Me:</h2>
+  <p class="my-6">
+    Hi, I'm Matthew!
+    <br><br>
+    I love designing beautiful software and building it to scale.
+    For example, I brought this desire to Motional, Hyundai's AI company.
+    Within a few weeks, I restructured the computer vision firmware install process, then built cloud services to
+    monitor deployments.
+    The result: instant clarity of release reliability and a decrease in debugging time by over 50%.
+    Plus, it's built to scale nationwide as the rapidly growing fleet of robo-taxis does.
+    <br><br>
+    I love to learn, explore, and take the lead--whether spearheading team projects in AI, directing ACM meetings, or
+    volunteering to help disadvantaged community members get back on their feet.
+    <br><br>
+    If you'd like to connect, let's <a href="https://www.linkedin.com/in/mattmorgan6" target="_blank">talk on
+      LinkedIn</a>!
+  </p>
+
+  <br>
+
+  <hr />
+
+  <div class="w-52 mx-auto flex my-10">
+    <a href="https://github.com/mattmorgan6" class="mx-6"><img src="assets/css/github.svg" alt="Github Icon"
+        class="w-6"></a>
+    <a href="https://linkedin.com/in/mattmorgan6" class="mx-6"><img src="assets/css/linkedin.svg" alt="Linkedin Icon"
+        class="w-6"></a>
+  </div>
+
+  <!-- <p>Graphic thanks to unDraw by Katerina Limpitsouni</p> -->
+
+</body>
+
+</html>

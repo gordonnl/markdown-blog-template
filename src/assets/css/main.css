@@ -2,6 +2,10 @@
 
 @import url('https://fonts.googleapis.com/css?family=Heebo:400,500|Lora:400,400i,700,700i|Libre+Baskerville:400,400i');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
     --color-primary: #e64d1a;
 }
@@ -18,8 +22,7 @@ h1 {
 h2,
 h3,
 h4,
-h5,
-h6 {
+h5 {
     font-family: 'Heebo', sans-serif;
 }
 
@@ -98,8 +101,7 @@ h1 {
 h2,
 h3,
 h4,
-h5,
-h6 {
+h5 {
     letter-spacing: -0.01em;
     line-height: 1.3em;
     font-weight: 500;
@@ -130,7 +132,10 @@ h5 {
 }
 
 h6 {
-    font-size: 13px;
+    font-size: 20px;
+    font-weight: normal;
+    margin-top: 40px;
+    margin-bottom: 0;
 }
 
 p {
@@ -162,7 +167,7 @@ a {
 }
 
 ul {
-    margin-top: 30px;
+    margin-top: 15px;
 }
 
 li>ul {

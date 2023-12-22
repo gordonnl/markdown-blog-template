@@ -1,26 +1,34 @@
 {
-  "name": "blog",
+  "name": "html-tailwind-starter",
   "version": "1.0.0",
-  "description": "### Steps",
-  "main": "utils/build.js",
-  "directories": {
-    "doc": "docs"
+  "description": "",
+  "main": "index.js",
+  "watch": {
+    "build": {
+      "patterns": [
+        "src"
+      ],
+      "extensions": "html"
+    }
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "npm-watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "postcss styles.css -o src/styles.css",
+    "dev": "concurrently \"npm run build && live-server src --port=8080\" \"npm run watch\""
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mattmorgan6/blog.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mattmorgan6/blog/issues"
-  },
-  "homepage": "https://github.com/mattmorgan6/blog#readme",
   "dependencies": {
+    "autoprefixer": "^10.2.4",
     "highlight.js": "^11.7.0",
-    "marked": "^4.2.3"
+    "marked": "^4.2.3",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "^3.1.4"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.2",
+    "npm-watch": "^0.11.0"
   }
 }

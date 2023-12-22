@@ -1,7 +1,7 @@
 const INDEX = `${__dirname}/../index.html`;
 const PAGES_DIR = `${__dirname}/../pages/`;
 const POSTS_DIR = `${__dirname}/../posts/`;
-const BUILD_DIR = `${__dirname}/../docs/`;
+const BUILD_DIR = `${__dirname}/../src/`;
 
 const fs = require('fs');
 const { marked } = require('marked');
@@ -128,7 +128,7 @@ function createHtmlFromPost(file, dirPath) {
 
     const dateString = get_datestring(markdownText);
     date = new Date(dateString);
-    // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString#syntax
+    // https://developer.mozilla.org/en-US/src/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString#syntax
     markdownText = markdownText.replace(("Date: " + dateString), `### ${date.toLocaleString('default', { month: 'long', year: 'numeric' })}`)
 
     // Add return to home link at the bottom of markdown file
@@ -147,7 +147,7 @@ function createHtmlFromPost(file, dirPath) {
     if (newTitle) output = output.replace(/<title>(.*?)<\/title>/, `<title>${newTitle}</title>`);
 
     const previewImgRegexMatch = output.match(/<PreviewImg>(.*?)<\/PreviewImg>/);
-    const previewImgPath = previewImgRegexMatch ? previewImgRegexMatch[1] : 'docs/assets/images/amazon-logo.png';
+    const previewImgPath = previewImgRegexMatch ? previewImgRegexMatch[1] : 'src/assets/images/amazon-logo.png';
 
     const hidefromBlog = output.match(/!HideFromBlog/);
     output = output.replace(/!HideFromBlog/, ``);
@@ -160,7 +160,7 @@ function createHtmlFromPost(file, dirPath) {
         posts.push(post);
     }
 
-    // Replace 'docs/assets' links with 'assets'
+    // Replace 'src/assets' links with 'assets'
     output = output.replace(/docs\/assets/g, 'assets');
 
     // Remove the preview image tag
@@ -195,7 +195,7 @@ function createHtmlFromPage(file, dirPath) {
     const newTitle = output.match(/>(.*?)<\/h1>/)[1] || null;
     if (newTitle) output = output.replace(/<title>(.*?)<\/title>/, `<title>${newTitle}</title>`);
 
-    // Replace 'docs/assets' links with 'assets'
+    // Replace 'src/assets' links with 'assets'
     output = output.replace(/docs\/assets/g, 'assets');
 
     // Replace local '?' dev links with built '.html'
