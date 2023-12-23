@@ -6,7 +6,7 @@
   "watch": {
     "build": {
       "patterns": [
-        "src"
+        "docs"
       ],
       "extensions": "html"
     }
@@ -14,8 +14,8 @@
   "scripts": {
     "watch": "npm-watch",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "postcss styles.css -o src/styles.css",
-    "dev": "concurrently \"npm run build && live-server src --port=8080\" \"npm run watch\""
+    "build": "postcss styles.css -o docs/styles.css",
+    "dev": "concurrently \"npm run build && live-server docs --port=8080\" \"npm run watch\""
   },
   "keywords": [],
   "author": "",
